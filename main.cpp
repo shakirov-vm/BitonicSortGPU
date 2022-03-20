@@ -1,7 +1,5 @@
 #include <sstream>
 #include <algorithm>
-#include <cassert>
-#include <charconv>
 #include <chrono>
 #include <fstream>
 #include <iostream>
@@ -9,15 +7,10 @@
 #include <random>
 #include <stdexcept>
 #include <string>
-#include <string_view>
 #include <system_error>
 #include <vector>
 
-#include <algorithm>
-#include <iostream>
-#include <numeric>
-#include <stdexcept>
-#include <vector>
+// Compile : g++ main.cpp -lOpenCL
 
 #ifndef CL_HPP_TARGET_OPENCL_VERSION
 #define CL_HPP_MINIMUM_OPENCL_VERSION 120
@@ -38,55 +31,47 @@
   } else                                                                       \
     std::cout
 
-constexpr size_t ARR_SIZE = 8;
+constexpr size_t ARR_SIZE = 4194304;
 constexpr size_t LOCAL_SIZE = 1;
 
-#define STRINGIFY(...) #__VA_ARGS__
+//long GDurAll = 0;
 
 struct option_error : public std::runtime_error {
-  option_error(const char *s) : std::runtime_error(s) {}
+    option_error(const char *str) : std::runtime_error(str) {}
 };
-
-// This example have built-in kernel to easy modify, etc
-
-// ---------------------------------- OpenCL ---------------------------------
-
-// OpenCL application encapsulates platform, context and queue
-// We can offload vector addition through its public interface
 
 class OclApp {
 
-    cl::Platform P_;
-    cl::Context C_;
-    cl::CommandQueue Q_;
-    std::string K_;
+    cl::Platform platform_;
+    cl::Context context_;
+    cl::CommandQueue queue_;
+    std::string kernel_code_;
 
     static cl::Platform select_platform();
     static cl::Context get_gpu_context(cl_platform_id);
-    static std::string readFile(const char *);
+    static std::string read_file(const char *path);
 
-    using bitonic_t = cl::KernelFunctor<cl::Buffer, int, int>;                 //
+    using bitonic_t = cl::KernelFunctor<cl::Buffer, int, int>;                 
 
 public:
-    OclApp() : P_(select_platform()), C_(get_gpu_context(P_())), Q_(C_), K_(readFile("./kernel.cl")) {
 
-        cl::string name = P_.getInfo<CL_PLATFORM_NAME>();
-        cl::string profile = P_.getInfo<CL_PLATFORM_PROFILE>();
+    OclApp() : platform_(select_platform()), context_(get_gpu_context(platform_())), queue_(context_), kernel_code_(read_file("./kernel.cl")) {
+
+        cl::string name    = platform_.getInfo<CL_PLATFORM_NAME>();
+        cl::string profile = platform_.getInfo<CL_PLATFORM_PROFILE>();
         dbgs << "Selected: " << name << ": " << profile << std::endl;
     }
 
-    // C[i] = A[i] + B[i]
-    // Here we shall ask ourselfes: why not template?
-    cl::Event bitonic(cl_int *APtr, size_t Sz);                  //
+    cl::Event bitonic(cl_int *sequence_ptr, size_t Sz);                  
 };
 
-std::string OclApp::readFile(const char *Path) {
+std::string OclApp::read_file(const char *path) {
 
     std::string Code;
     std::ifstream ShaderFile;
    
     ShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-    ShaderFile.open(Path);
+    ShaderFile.open(path);
   
     std::stringstream ShaderStream;
     ShaderStream << ShaderFile.rdbuf();
@@ -97,89 +82,72 @@ std::string OclApp::readFile(const char *Path) {
     return Code;
 }
 
-// select first platform with some GPUs
 cl::Platform OclApp::select_platform() {
 
     cl::vector<cl::Platform> platforms;
     cl::Platform::get(&platforms);
   
-    for (auto p : platforms) {
-        // note: usage of p() for plain id
+    for (auto it : platforms) {
+
         cl_uint numdevices = 0;
-        ::clGetDeviceIDs(p(), CL_DEVICE_TYPE_GPU, 0, NULL, &numdevices);
-        if (numdevices > 0)
-            return cl::Platform(p); // retain?
+        
+        ::clGetDeviceIDs(it(), CL_DEVICE_TYPE_GPU, 0, NULL, &numdevices);
+
+        if (numdevices > 0) return cl::Platform(it);
     }
+
     throw std::runtime_error("No platform selected");
 }
 
-// get context for selected platform
 cl::Context OclApp::get_gpu_context(cl_platform_id PId) {
-  cl_context_properties properties[] = {
-      CL_CONTEXT_PLATFORM, reinterpret_cast<cl_context_properties>(PId),
-      0 // signals end of property list
-  };
-
-  return cl::Context(CL_DEVICE_TYPE_GPU, properties);
+    
+    cl_context_properties properties[] = {CL_CONTEXT_PLATFORM, reinterpret_cast<cl_context_properties>(PId), 0};
+    return cl::Context(CL_DEVICE_TYPE_GPU, properties);
 }
 
-cl::Event OclApp::bitonic(cl_int *APtr, size_t Sz) {
+cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
 
-    std::cout << "in bitonic" << std::endl;
-    size_t BufSz = Sz * sizeof(cl_int);
+    cl::Buffer sequence(context_, CL_MEM_READ_WRITE, sequence_size * sizeof(cl_int));
 
-    cl::Buffer A(C_, CL_MEM_READ_WRITE, BufSz);
+    cl::copy(queue_, sequence_ptr, sequence_ptr + sequence_size, sequence);
 
-    cl::copy(Q_, APtr, APtr + Sz, A);
-
-    // try forget context here and happy debugging CL_INVALID_MEM_OBJECT:
-    // cl::Program program(vakernel, true /* build immediately */);
-  
-    cl::Program program(C_, K_, true /* build immediately */);
+    cl::Program program(context_, kernel_code_, true);
     
     bitonic_t bitonic_simple(program, "bitonic_simple");  
 
-    /*int ret = clSetKernelArg(bitonic_simple, 0, sizeof(cl::Buffer), (void *)&A);
-    std::cout << "ret is " << ret << std::endl;*/
+    cl::Event event;
 
+    //cl_ulong GPUTimeStart, GPUTimeFin;
 
-
-    std::cout << "Before for" << std::endl;
-    cl::Event evt;
-
-    /*for (int k = 2; k <= ARR_SIZE; k *= 2) {
-
-        for (int j = k / 2; j > 0; j /= 2) {*/
     for (int biton_size = 2; biton_size < ARR_SIZE + 1; biton_size *= 2) {
 
         for (int bucket_size = biton_size; bucket_size > 1; bucket_size /= 2) {
          
-            cl::NDRange GlobalRange(ARR_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
-            cl::NDRange LocalRange(LOCAL_SIZE, LOCAL_SIZE, LOCAL_SIZE);
+            cl::NDRange global_range(ARR_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
+            cl::NDRange local_range(LOCAL_SIZE, LOCAL_SIZE, LOCAL_SIZE);
 
-            std::cout << "Set NDRange" << std::endl;
+            cl::EnqueueArgs args(queue_, global_range, local_range);
 
-            cl::EnqueueArgs Args(Q_, GlobalRange, LocalRange);
+            event = bitonic_simple(args, sequence, biton_size, bucket_size);
+            event.wait();
 
-            evt = bitonic_simple(Args, A, biton_size, bucket_size);
-            evt.wait();
-            //std::cout << "Yes" << std::endl;
-            /*for (auto it : *A) {
-               std::cout << *it << " ";
-            }*/
-            //std::cout << std::endl;
+            /*GPUTimeStart = event.getProfilingInfo<CL_PROFILING_COMMAND_START>();
+            GPUTimeFin = event.getProfilingInfo<CL_PROFILING_COMMAND_END>();
+
+            GDurAll += (GPUTimeFin - GPUTimeStart) / 1000000; // ns -> ms*/
         }
     }
 
-    cl::copy(Q_, A, APtr, APtr + Sz);
-    return evt;
+    cl::copy(queue_, sequence, sequence_ptr, sequence_ptr + sequence_size);
+    return event;
 }
 
 template <typename It> void rand_init(It start, It end, int low, int up) {
-  static std::mt19937_64 mt_source;
-  std::uniform_int_distribution<int> dist(low, up);
-  for (It cur = start; cur != end; ++cur)
-    *cur = dist(mt_source);
+    
+    static std::mt19937_64 mt_source;
+    std::uniform_int_distribution<int> dist(low, up);
+    
+    for (It cur = start; cur != end; ++cur) *cur = dist(mt_source);
 }
 
 
@@ -192,100 +160,96 @@ int main(int argc, char **argv) try {
     
     dbgs << "Hello from bitonic" << std::endl;
 
-    OclApp App;
+    OclApp app;
 
-    cl::vector<int> A(ARR_SIZE);
+    cl::vector<int> sequence(ARR_SIZE);
     
+#ifdef FROM_FILE
+
     std::ifstream in_num("./test.txt");
 
     for(int i = 0; i < ARR_SIZE; i++) {
-        in_num >> A[i];
+        in_num >> sequence[i];
     }
-    // random initialize -- we just want to excersize and measure
-    //rand_init(A.begin(), A.end(), 0, 100);
-    cl::vector<int> A_copy = A;
-    
-    // do matrix multiply
-    TimeStart = std::chrono::high_resolution_clock::now();
 
-    cl::Event Evt = App.bitonic(A.data(), ARR_SIZE);
+#endif
+
+    rand_init(sequence.begin(), sequence.end(), 0, 100);
+    cl::vector<int> sequence_copy = sequence;
     
+    TimeStart = std::chrono::high_resolution_clock::now();
+    cl::Event event = app.bitonic(sequence.data(), ARR_SIZE);
     TimeFin = std::chrono::high_resolution_clock::now();
     
     Dur = std::chrono::duration_cast<std::chrono::milliseconds>(TimeFin - TimeStart).count();
 
     std::cout << "GPU wall time measured: " << Dur << " ms" << std::endl;
 
-    /*GPUTimeStart = Evt.getProfilingInfo<CL_PROFILING_COMMAND_START>();
+    /*GPUTimeStart = event.getProfilingInfo<CL_PROFILING_COMMAND_START>();
+    GPUTimeFin = event.getProfilingInfo<CL_PROFILING_COMMAND_END>();
 
-    GPUTimeFin = Evt.getProfilingInfo<CL_PROFILING_COMMAND_END>();
-
-    GDur = (GPUTimeFin - GPUTimeStart) / 1000000; // ns -> ms
-
+    GDur = (GPUTimeFin - GPUTimeStart) / 1000000; // ns -> ms                       Can we count like this?
+                                                                                    We have so much events...
     std::cout << "GPU pure time measured: " << GDur << " ms" << std::endl;*/
 
+    //std::cout << "GPU pure time measured: " << GDurAll << " ms" << std::endl;
+
+#ifdef PRINT_SORT
+
     for (int i = 0; i < ARR_SIZE; i++) {
-        std::cout << A[i] << " ";
+        std::cout << sequence[i] << " ";
     }
     std::cout << std::endl;
 
-    std::cout << "We print array" << std::endl;
-
-#ifdef VISUALIZE
-    std::cout << "--- Matrix ---\n";
-    outm(C.data(), Cfg.AX, Cfg.BY);
-    std::cout << "--- End Matrix ---\n";
 #endif
-
-#if COMPARE_CPU
-
     
     TimeStart = std::chrono::high_resolution_clock::now();
-    
-    std::sort(A_copy.begin(), A_copy.end());
-
+    std::sort(sequence_copy.begin(), sequence_copy.end());
     TimeFin = std::chrono::high_resolution_clock::now();
 
     Dur = std::chrono::duration_cast<std::chrono::milliseconds>(TimeFin - TimeStart).count();
     
     std::cout << "CPU time measured: " << Dur << " ms" << std::endl;
 
-#ifdef VISUALIZE
-    std::cout << "--- Matrix ---\n";
-    outm(CCPU.data(), Cfg.AX, Cfg.BY);
-    std::cout << "--- End Matrix ---\n";
-#endif
-
     for (int i = 0; i < ARR_SIZE; ++i) {
         
-        auto lhs = A[i];
-        auto rhs = A_copy[i];
+        auto lhs = sequence[i];
+        auto rhs = sequence_copy[i];
         if (lhs != rhs) {
           
             std::cerr << "Error at index " << i << ": " << lhs << " != " << rhs << std::endl;
             return -1;
         }
     }
-#endif
 
-  dbgs << "All checks passed" << std::endl;
-} catch (cl::BuildError &err) {
-  std::cerr << "OCL BUILD ERROR: " << err.err() << ":" << err.what() << std::endl;
-  std::cerr << "-- Log --\n";
-  for (auto e : err.getBuildLog())
-    std::cerr << e.second;
-  std::cerr << "-- End log --\n";
-  return -1;
-} catch (cl::Error &err) {
-  std::cerr << "OCL ERROR: " << err.err() << ":" << err.what() << std::endl;
-  return -1;
-} catch (option_error &err) {
-  std::cerr << "INVALID OPTION: " << err.what() << std::endl;
-  return -1;
-} catch (std::runtime_error &err) {
-  std::cerr << "RUNTIME ERROR: " << err.what() << std::endl;
-  return -1;
-} catch (...) {
-  std::cerr << "UNKNOWN ERROR\n";
-  return -1;
+    dbgs << "All checks passed" << std::endl;
+} 
+catch (cl::BuildError &err) {
+
+    std::cerr << "OCL BUILD ERROR: " << err.err() << ":" << err.what() << std::endl;
+    std::cerr << "-- Log --\n";
+    for (auto e : err.getBuildLog())
+        std::cerr << e.second;
+    std::cerr << "-- End log --\n";
+    return -1;
+} 
+catch (cl::Error &err) {
+
+    std::cerr << "OCL ERROR: " << err.err() << ":" << err.what() << std::endl;
+    return -1;
+} 
+catch (option_error &err) {
+
+    std::cerr << "INVALID OPTION: " << err.what() << std::endl;
+    return -1;
+} 
+catch (std::runtime_error &err) {
+
+    std::cerr << "RUNTIME ERROR: " << err.what() << std::endl;
+    return -1;
+} 
+catch (...) {
+
+    std::cerr << "UNKNOWN ERROR\n";
+    return -1;
 }

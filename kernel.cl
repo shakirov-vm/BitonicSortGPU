@@ -1,27 +1,4 @@
 
-/*
-__kernel void bitonic_simple(__global int *arr, const int k, const int j) {
-
-	//printf("kernel\n");
-
-	int i = get_global_id(0);
-
-	int l = i ^ j;
-	if (l > i) {
-
-		if ( (((i ^ k) == 0) && (arr[i] > arr[l])) 
-		 ||  (((i ^ k) != 0) && (arr[i] < arr[l])) ) {
-			 
-			int tmp = arr[i];
-			arr[i] = arr[l];
-			arr[l] = tmp;
-		}
-	}
-
-	//printf("[%d - %d] ", i, arr[i]);
-}*/
-
-
 __kernel void bitonic_simple(__global int *arr, const int biton_size, const int bucket_size) {
 
 	int i = get_global_id(0);
