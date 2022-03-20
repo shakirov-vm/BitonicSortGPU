@@ -1,17 +1,3 @@
-//-----------------------------------------------------------------------------
-//
-// Source code for MIPT ILab
-// Slides: https://sourceforge.net/projects/cpp-lects-rus/files/cpp-graduate/
-// Licensed after GNU GPL v3
-//
-//-----------------------------------------------------------------------------
-//
-// Simple vectoradd OpenCL application
-//
-// clang++ -o vectoradd.exe cl_vectoradd.cc -lOpenCL
-//
-//-----------------------------------------------------------------------------
-
 #include <sstream>
 #include <algorithm>
 #include <cassert>
@@ -52,7 +38,7 @@
   } else                                                                       \
     std::cout
 
-constexpr size_t ARR_SIZE = 64;
+constexpr size_t ARR_SIZE = 8;
 constexpr size_t LOCAL_SIZE = 1;
 
 #define STRINGIFY(...) #__VA_ARGS__
@@ -79,7 +65,7 @@ class OclApp {
     static cl::Context get_gpu_context(cl_platform_id);
     static std::string readFile(const char *);
 
-    using bitonic_t = cl::KernelFunctor<cl::Buffer, size_t>;                 //
+    using bitonic_t = cl::KernelFunctor<cl::Buffer, int, int>;                 //
 
 public:
     OclApp() : P_(select_platform()), C_(get_gpu_context(P_())), Q_(C_), K_(readFile("./kernel.cl")) {
@@ -139,6 +125,7 @@ cl::Context OclApp::get_gpu_context(cl_platform_id PId) {
 
 cl::Event OclApp::bitonic(cl_int *APtr, size_t Sz) {
 
+    std::cout << "in bitonic" << std::endl;
     size_t BufSz = Sz * sizeof(cl_int);
 
     cl::Buffer A(C_, CL_MEM_READ_WRITE, BufSz);
@@ -147,22 +134,40 @@ cl::Event OclApp::bitonic(cl_int *APtr, size_t Sz) {
 
     // try forget context here and happy debugging CL_INVALID_MEM_OBJECT:
     // cl::Program program(vakernel, true /* build immediately */);
+  
     cl::Program program(C_, K_, true /* build immediately */);
+    
+    bitonic_t bitonic_simple(program, "bitonic_simple");  
 
-    bitonic_t bitonic_simple(program, "bitonic__simple");                         //////
+    /*int ret = clSetKernelArg(bitonic_simple, 0, sizeof(cl::Buffer), (void *)&A);
+    std::cout << "ret is " << ret << std::endl;*/
 
-    cl::NDRange GlobalRange(Sz);
-    cl::NDRange LocalRange(LOCAL_SIZE);
-    cl::EnqueueArgs Args(Q_, GlobalRange, LocalRange);
 
+
+    std::cout << "Before for" << std::endl;
     cl::Event evt;
 
-    for (int k = 2; k <= ARR_SIZE; k *= 2) {
+    /*for (int k = 2; k <= ARR_SIZE; k *= 2) {
 
-        for (int j = k / 2; j > 0; j /= 2) {
+        for (int j = k / 2; j > 0; j /= 2) {*/
+    for (int biton_size = 2; biton_size < ARR_SIZE + 1; biton_size *= 2) {
+
+        for (int bucket_size = biton_size; bucket_size > 1; bucket_size /= 2) {
          
-            evt = bitonic_simple(Args, A, k, j);
+            cl::NDRange GlobalRange(ARR_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
+            cl::NDRange LocalRange(LOCAL_SIZE, LOCAL_SIZE, LOCAL_SIZE);
+
+            std::cout << "Set NDRange" << std::endl;
+
+            cl::EnqueueArgs Args(Q_, GlobalRange, LocalRange);
+
+            evt = bitonic_simple(Args, A, biton_size, bucket_size);
             evt.wait();
+            //std::cout << "Yes" << std::endl;
+            /*for (auto it : *A) {
+               std::cout << *it << " ";
+            }*/
+            //std::cout << std::endl;
         }
     }
 
@@ -190,11 +195,16 @@ int main(int argc, char **argv) try {
     OclApp App;
 
     cl::vector<int> A(ARR_SIZE);
-    cl::vector<int> A_copy = A;
+    
+    std::ifstream in_num("./test.txt");
 
+    for(int i = 0; i < ARR_SIZE; i++) {
+        in_num >> A[i];
+    }
     // random initialize -- we just want to excersize and measure
-    rand_init(A.begin(), A.end(), 0, 1000);
-
+    //rand_init(A.begin(), A.end(), 0, 100);
+    cl::vector<int> A_copy = A;
+    
     // do matrix multiply
     TimeStart = std::chrono::high_resolution_clock::now();
 
@@ -206,13 +216,20 @@ int main(int argc, char **argv) try {
 
     std::cout << "GPU wall time measured: " << Dur << " ms" << std::endl;
 
-    GPUTimeStart = Evt.getProfilingInfo<CL_PROFILING_COMMAND_START>();
+    /*GPUTimeStart = Evt.getProfilingInfo<CL_PROFILING_COMMAND_START>();
 
     GPUTimeFin = Evt.getProfilingInfo<CL_PROFILING_COMMAND_END>();
 
     GDur = (GPUTimeFin - GPUTimeStart) / 1000000; // ns -> ms
 
-    std::cout << "GPU pure time measured: " << GDur << " ms" << std::endl;
+    std::cout << "GPU pure time measured: " << GDur << " ms" << std::endl;*/
+
+    for (int i = 0; i < ARR_SIZE; i++) {
+        std::cout << A[i] << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "We print array" << std::endl;
 
 #ifdef VISUALIZE
     std::cout << "--- Matrix ---\n";
