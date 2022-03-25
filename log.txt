@@ -1,0 +1,134 @@
+Hello from bitonic
+Selected: NVIDIA CUDA: FULL_PROFILE
+pos: 0, 8 - 0
+pos: 1, 9 - 0
+pos: 2, 10 - 0
+pos: 3, 11 - 0
+pos: 4, 12 - 0
+pos: 5, 13 - 0
+pos: 6, 14 - 0
+pos: 7, 15 - 0
+vec: 1, 9 - 0
+vec: 5, 11 - 1
+vec: 4, 15 - 2
+vec: 8, 14 - 3
+vec: 7, 12 - 4
+vec: 2, 13 - 5
+vec: 3, 10 - 6
+vec: 6, 16 - 7
+up and low: 0, 1 - 0
+up and low: 2, 3 - 1
+up and low: 4, 5 - 2
+up and low: 6, 7 - 3
+up and low: 8, 9 - 4
+up and low: 10, 11 - 5
+up and low: 12, 13 - 6
+up and low: 14, 15 - 7
+vec up and low: 1, 5 - 0
+vec up and low: 4, 8 - 1
+vec up and low: 7, 2 - 2
+vec up and low: 3, 6 - 3
+vec up and low: 9, 11 - 4
+vec up and low: 15, 14 - 5
+vec up and low: 12, 13 - 6
+vec up and low: 10, 16 - 7
+vec < : 4, 8 - 1
+vec < : 3, 6 - 3
+vec < : 15, 14 - 5
+vec < : 10, 16 - 7
+vec > : 1, 5 - 0
+vec > : 7, 2 - 2
+vec > : 9, 11 - 4
+vec > : 12, 13 - 6
+in end: 1, 5 - 0
+in end: 8, 4 - 1
+in end: 2, 7 - 2
+in end: 6, 3 - 3
+in end: 9, 11 - 4
+in end: 15, 14 - 5
+in end: 12, 13 - 6
+in end: 16, 10 - 7
+End
+End
+End
+End
+End
+End
+End
+End
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+Start
+GPU wall time measured: 72 ms
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 
+CPU time measured: 0 ms
+All checks passed

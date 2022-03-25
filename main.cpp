@@ -31,7 +31,8 @@
   } else                                                                       \
     std::cout
 
-constexpr size_t ARR_SIZE = 4194304;
+//constexpr size_t ARR_SIZE = 4194304;
+constexpr size_t ARR_SIZE = 16;
 constexpr size_t LOCAL_SIZE = 1;
 
 //long GDurAll = 0;
@@ -51,7 +52,8 @@ class OclApp {
     static cl::Context get_gpu_context(cl_platform_id);
     static std::string read_file(const char *path);
 
-    using bitonic_t = cl::KernelFunctor<cl::Buffer, int, int>;                 
+    using bitonic_t = cl::KernelFunctor<cl::Buffer, int, int>; 
+    using before256_t = cl::KernelFunctor<cl::Buffer>;                    
 
 public:
 
@@ -114,27 +116,51 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
     cl::Program program(context_, kernel_code_, true);
     
     bitonic_t bitonic_simple(program, "bitonic_simple");  
+    bitonic_t bitonic_hard(program, "bitonic_hard"); 
+
+    /*kernel_code_ = std::string(read_file("./before256.cl"));
+    cl::Program program_1(context_, kernel_code_, true);
+    before256_t before256_simple(program_1, "before256");*/
 
     cl::Event event;
-
     //cl_ulong GPUTimeStart, GPUTimeFin;
+
+    //cl::NDRange global_range(512);
+    //cl::EnqueueArgs args(queue_, global_range, local_range);
+
+    /*event = before256_simple(args, sequence);
+    event.wait();*/
+
+    int local_x = 0;
 
     for (int biton_size = 2; biton_size < ARR_SIZE + 1; biton_size *= 2) {
 
+        if (ARR_SIZE / biton_size >= 8) local_x = 8;
+        else local_x = ARR_SIZE / biton_size;
+
         for (int bucket_size = biton_size; bucket_size > 1; bucket_size /= 2) {
-         
+
             cl::NDRange global_range(ARR_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
-            cl::NDRange local_range(LOCAL_SIZE, LOCAL_SIZE, LOCAL_SIZE);
 
-            cl::EnqueueArgs args(queue_, global_range, local_range);
+            if (local_x > 7) {
 
-            event = bitonic_simple(args, sequence, biton_size, bucket_size);
+                cl::NDRange local_range(local_x, 1, 1);
+                cl::EnqueueArgs args(queue_, global_range, local_range);
+                event = bitonic_hard(args, sequence, biton_size, bucket_size);
+            }
+            else {
+
+                cl::NDRange local_range(1, 1, 1);
+                cl::EnqueueArgs args(queue_, global_range, local_range);
+
+                event = bitonic_simple(args, sequence, biton_size, bucket_size);
+            }
             event.wait();
 
-            /*GPUTimeStart = event.getProfilingInfo<CL_PROFILING_COMMAND_START>();
-            GPUTimeFin = event.getProfilingInfo<CL_PROFILING_COMMAND_END>();
+            //GPUTimeStart = event.getProfilingInfo<CL_PROFILING_COMMAND_START>();
+            //GPUTimeFin = event.getProfilingInfo<CL_PROFILING_COMMAND_END>();
 
-            GDurAll += (GPUTimeFin - GPUTimeStart) / 1000000; // ns -> ms*/
+            //GDurAll += (GPUTimeFin - GPUTimeStart) / 1000000; // ns -> ms
         }
     }
 
@@ -165,8 +191,11 @@ int main(int argc, char **argv) try {
     cl::vector<int> sequence(ARR_SIZE);
     
 #ifdef FROM_FILE
-
+    
     std::ifstream in_num("./test.txt");
+    //std::ifstream in_num("./_512_.txt");
+    //std::ifstream in_num("./_32_.txt");
+    
 
     for(int i = 0; i < ARR_SIZE; i++) {
         in_num >> sequence[i];
@@ -174,7 +203,10 @@ int main(int argc, char **argv) try {
 
 #endif
 
+#ifndef FROM_FILE
     rand_init(sequence.begin(), sequence.end(), 0, 100);
+#endif
+
     cl::vector<int> sequence_copy = sequence;
     
     TimeStart = std::chrono::high_resolution_clock::now();
