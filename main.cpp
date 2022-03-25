@@ -32,7 +32,7 @@
     std::cout
 
 //constexpr size_t ARR_SIZE = 4194304;
-constexpr size_t ARR_SIZE = 16;
+constexpr size_t ARR_SIZE = 32;
 constexpr size_t LOCAL_SIZE = 1;
 
 //long GDurAll = 0;
@@ -192,9 +192,9 @@ int main(int argc, char **argv) try {
     
 #ifdef FROM_FILE
     
-    std::ifstream in_num("./test.txt");
+    //std::ifstream in_num("./test.txt");
     //std::ifstream in_num("./_512_.txt");
-    //std::ifstream in_num("./_32_.txt");
+    std::ifstream in_num("./_32_.txt");
     
 
     for(int i = 0; i < ARR_SIZE; i++) {
