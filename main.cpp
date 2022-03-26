@@ -10,7 +10,7 @@
 #include <system_error>
 #include <vector>
 
-// Compile : g++ main.cpp -lOpenCL
+// Compile : g++ main.cpp -lOpenCL -DFROM_FILE -DPRINT_SORT
 
 #ifndef CL_HPP_TARGET_OPENCL_VERSION
 #define CL_HPP_MINIMUM_OPENCL_VERSION 120
@@ -34,6 +34,7 @@
 //constexpr size_t ARR_SIZE = 4194304;
 constexpr size_t ARR_SIZE = 32;
 constexpr size_t LOCAL_SIZE = 1;
+#define WORK_GROUP_SIZE 8
 
 //long GDurAll = 0;
 
@@ -131,21 +132,19 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
     /*event = before256_simple(args, sequence);
     event.wait();*/
 
-    int local_x = 0;
-
     for (int biton_size = 2; biton_size < ARR_SIZE + 1; biton_size *= 2) {
-
-        if (ARR_SIZE / biton_size >= 8) local_x = 8;
-        else local_x = ARR_SIZE / biton_size;
 
         for (int bucket_size = biton_size; bucket_size > 1; bucket_size /= 2) {
 
             cl::NDRange global_range(ARR_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
-
-            if (local_x > 7) {
-
-                cl::NDRange local_range(local_x, 1, 1);
+            
+            if (biton_size < WORK_GROUP_SIZE * 2 + 1) {                
+                
+                printf("GLOBAL RANGE IS %ld, %d, %d\n", ARR_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
+                printf("LOCAL RANGE IS %d, %d, %d\n", 2 * WORK_GROUP_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
+                cl::NDRange local_range(2 * WORK_GROUP_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
                 cl::EnqueueArgs args(queue_, global_range, local_range);
+            
                 event = bitonic_hard(args, sequence, biton_size, bucket_size);
             }
             else {
