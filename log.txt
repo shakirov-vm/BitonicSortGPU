@@ -2,1624 +2,589 @@ Hello from bitonic
 Selected: NVIDIA CUDA: FULL_PROFILE
 GLOBAL RANGE IS 16, 1, 1
 LOCAL RANGE IS 8, 1, 1
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-local_pos is 6
-local_pos is 7
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-local_pos is 6
-local_pos is 7
-global id: 8, 0, 0 - 8
-global id: 9, 0, 0 - 9
-global id: 10, 0, 0 - 10
-global id: 11, 0, 0 - 11
-global id: 12, 0, 0 - 12
-global id: 13, 0, 0 - 13
-global id: 14, 0, 0 - 14
-global id: 15, 0, 0 - 15
-global id: 0, 0, 0 - 0
-global id: 1, 0, 0 - 1
-global id: 2, 0, 0 - 2
-global id: 3, 0, 0 - 3
-global id: 4, 0, 0 - 4
-global id: 5, 0, 0 - 5
-global id: 6, 0, 0 - 6
-global id: 7, 0, 0 - 7
-global size: 16, 0, 1
-global size: 16, 0, 1
-global size: 16, 0, 1
-global size: 16, 0, 1
-global size: 16, 0, 1
-global size: 16, 0, 1
-global size: 16, 0, 1
-global size: 16, 0, 1
-global size: 16, 0, 1
-global size: 16, 0, 1
-global size: 16, 0, 1
-global size: 16, 0, 1
-global size: 16, 0, 1
-global size: 16, 0, 1
-global size: 16, 0, 1
-global size: 16, 0, 1
-local size 0: local id: 0, 0, 0 [8, 0, 1]
-local size 1: local id: 1, 0, 0 [8, 0, 1]
-local size 2: local id: 2, 0, 0 [8, 0, 1]
-local size 3: local id: 3, 0, 0 [8, 0, 1]
-local size 4: local id: 4, 0, 0 [8, 0, 1]
-local size 5: local id: 5, 0, 0 [8, 0, 1]
-local size 6: local id: 6, 0, 0 [8, 0, 1]
-local size 7: local id: 7, 0, 0 [8, 0, 1]
-local size 0: local id: 0, 0, 0 [8, 0, 1]
-local size 1: local id: 1, 0, 0 [8, 0, 1]
-local size 2: local id: 2, 0, 0 [8, 0, 1]
-local size 3: local id: 3, 0, 0 [8, 0, 1]
-local size 4: local id: 4, 0, 0 [8, 0, 1]
-local size 5: local id: 5, 0, 0 [8, 0, 1]
-local size 6: local id: 6, 0, 0 [8, 0, 1]
-local size 7: local id: 7, 0, 0 [8, 0, 1]
-global: 16, 24 - [0;8]
-global: 17, 25 - [1;9]
-global: 18, 26 - [2;10]
-global: 19, 27 - [3;11]
-global: 20, 28 - [4;12]
-global: 21, 29 - [5;13]
-global: 22, 30 - [6;14]
-global: 23, 31 - [7;15]
-global: 0, 8 - [0;0]
-global: 1, 9 - [1;1]
-global: 2, 10 - [2;2]
-global: 3, 11 - [3;3]
-global: 4, 12 - [4;4]
-global: 5, 13 - [5;5]
-global: 6, 14 - [6;6]
-global: 7, 15 - [7;7]
-local: 0, 1 - [0;8]
-local: 2, 3 - [1;9]
-local: 4, 5 - [2;10]
-local: 6, 7 - [3;11]
-local: 8, 9 - [4;12]
-local: 10, 11 - [5;13]
-local: 12, 13 - [6;14]
-local: 14, 15 - [7;15]
-local: 0, 1 - [0;0]
-local: 2, 3 - [1;1]
-local: 4, 5 - [2;2]
-local: 6, 7 - [3;3]
-local: 8, 9 - [4;4]
-local: 10, 11 - [5;5]
-local: 12, 13 - [6;6]
-local: 14, 15 - [7;7]
-global up and low: 15, 25 - [0;8]
-global up and low: 14, 32 - [1;9]
-global up and low: 12, 31 - [2;10]
-global up and low: 13, 30 - [3;11]
-global up and low: 10, 26 - [4;12]
-global up and low: 16, 29 - [5;13]
-global up and low: 23, 28 - [6;14]
-global up and low: 24, 27 - [7;15]
-global up and low: 17, 4 - [0;0]
-global up and low: 18, 8 - [1;1]
-global up and low: 19, 7 - [2;2]
-global up and low: 20, 2 - [3;3]
-global up and low: 21, 3 - [4;4]
-global up and low: 22, 6 - [5;5]
-global up and low: 1, 9 - [6;6]
-global up and low: 5, 11 - [7;7]
-local up and low: 15, 14 - [0;8]
-local up and low: 12, 13 - [1;9]
-local up and low: 10, 16 - [2;10]
-local up and low: 23, 24 - [3;11]
-local up and low: 25, 32 - [4;12]
-local up and low: 31, 30 - [5;13]
-local up and low: 26, 29 - [6;14]
-local up and low: 28, 27 - [7;15]
-local up and low: 17, 18 - [0;0]
-local up and low: 19, 20 - [1;1]
-local up and low: 21, 22 - [2;2]
-local up and low: 1, 5 - [3;3]
-local up and low: 4, 8 - [4;4]
-local up and low: 7, 2 - [5;5]
-local up and low: 3, 6 - [6;6]
-local up and low: 9, 11 - [7;7]
-vec < : 12, 13 - 1 : [1;9]
-vec < : 23, 24 - 3 : [3;11]
-vec < : 31, 30 - 5 : [5;13]
-vec < : 28, 27 - 7 : [7;15]
-vec < : 19, 20 - 1 : [1;1]
-vec < : 1, 5 - 3 : [3;3]
-vec < : 7, 2 - 5 : [5;5]
-vec < : 9, 11 - 7 : [7;7]
-vec > : 15, 14 - 0 : [0;8]
-vec > : 10, 16 - 2 : [2;10]
-vec > : 25, 32 - 4 : [4;12]
-vec > : 26, 29 - 6 : [6;14]
-vec > : 17, 18 - 0 : [0;0]
-vec > : 21, 22 - 2 : [2;2]
-vec > : 4, 8 - 4 : [4;4]
-vec > : 3, 6 - 6 : [6;6]
-in end: 14, 15 - [0;8]
-in end: 13, 12 - [1;9]
-in end: 10, 16 - [2;10]
-in end: 24, 23 - [3;11]
-in end: 25, 32 - [4;12]
-in end: 31, 30 - [5;13]
-in end: 26, 29 - [6;14]
-in end: 28, 27 - [7;15]
-in end: 17, 18 - [0;0]
-in end: 20, 19 - [1;1]
-in end: 21, 22 - [2;2]
-in end: 5, 1 - [3;3]
-in end: 4, 8 - [4;4]
-in end: 7, 2 - [5;5]
-in end: 3, 6 - [6;6]
-in end: 11, 9 - [7;7]
+global: up - 16, low - 17, arr[up] - 15, arr[low] - 14
+global: up - 18, low - 19, arr[up] - 12, arr[low] - 13
+global: up - 20, low - 21, arr[up] - 10, arr[low] - 16
+global: up - 22, low - 23, arr[up] - 23, arr[low] - 24
+global: up - 24, low - 25, arr[up] - 25, arr[low] - 32
+global: up - 26, low - 27, arr[up] - 31, arr[low] - 30
+global: up - 28, low - 29, arr[up] - 26, arr[low] - 29
+global: up - 30, low - 31, arr[up] - 28, arr[low] - 27
+global: up - 0, low - 1, arr[up] - 17, arr[low] - 18
+global: up - 2, low - 3, arr[up] - 19, arr[low] - 20
+global: up - 4, low - 5, arr[up] - 21, arr[low] - 22
+global: up - 6, low - 7, arr[up] - 1, arr[low] - 5
+global: up - 8, low - 9, arr[up] - 4, arr[low] - 8
+global: up - 10, low - 11, arr[up] - 7, arr[low] - 2
+global: up - 12, low - 13, arr[up] - 3, arr[low] - 6
+global: up - 14, low - 15, arr[up] - 9, arr[low] - 11
+local: l_up - 0, l_low - 1, vec[l_up] - 15, vec[l_low] - 14
+local: l_up - 2, l_low - 3, vec[l_up] - 12, vec[l_low] - 13
+local: l_up - 4, l_low - 5, vec[l_up] - 10, vec[l_low] - 16
+local: l_up - 6, l_low - 7, vec[l_up] - 23, vec[l_low] - 24
+local: l_up - 8, l_low - 9, vec[l_up] - 25, vec[l_low] - 32
+local: l_up - 10, l_low - 11, vec[l_up] - 31, vec[l_low] - 30
+local: l_up - 12, l_low - 13, vec[l_up] - 26, vec[l_low] - 29
+local: l_up - 14, l_low - 15, vec[l_up] - 28, vec[l_low] - 27
+local: l_up - 0, l_low - 1, vec[l_up] - 17, vec[l_low] - 18
+local: l_up - 2, l_low - 3, vec[l_up] - 19, vec[l_low] - 20
+local: l_up - 4, l_low - 5, vec[l_up] - 21, vec[l_low] - 22
+local: l_up - 6, l_low - 7, vec[l_up] - 1, vec[l_low] - 5
+local: l_up - 8, l_low - 9, vec[l_up] - 4, vec[l_low] - 8
+local: l_up - 10, l_low - 11, vec[l_up] - 7, vec[l_low] - 2
+local: l_up - 12, l_low - 13, vec[l_up] - 3, vec[l_low] - 6
+local: l_up - 14, l_low - 15, vec[l_up] - 9, vec[l_low] - 11
+equal : 15 > 14 - 0
+equal : 12 > 13 - 1
+equal : 10 > 16 - 2
+equal : 23 > 24 - 3
+equal : 25 > 32 - 4
+equal : 31 > 30 - 5
+equal : 26 > 29 - 6
+equal : 28 > 27 - 7
+equal : 17 > 18 - 0
+equal : 19 > 20 - 1
+equal : 21 > 22 - 2
+equal : 1 > 5 - 3
+equal : 4 > 8 - 4
+equal : 7 > 2 - 5
+equal : 3 > 6 - 6
+equal : 9 > 11 - 7
 GLOBAL RANGE IS 8, 1, 2
 LOCAL RANGE IS 4, 1, 2
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-global id: 4, 0, 0 - 8
-global id: 5, 0, 0 - 9
-global id: 6, 0, 0 - 10
-global id: 7, 0, 0 - 11
-global id: 4, 0, 1 - 9
-global id: 5, 0, 1 - 10
-global id: 6, 0, 1 - 11
-global id: 7, 0, 1 - 12
-global id: 0, 0, 0 - 0
-global id: 1, 0, 0 - 1
-global id: 2, 0, 0 - 2
-global id: 3, 0, 0 - 3
-global id: 0, 0, 1 - 1
-global id: 1, 0, 1 - 2
-global id: 2, 0, 1 - 3
-global id: 3, 0, 1 - 4
-global size: 8, 0, 1
-global size: 8, 0, 1
-global size: 8, 0, 1
-global size: 8, 0, 1
-global size: 8, 0, 1
-global size: 8, 0, 1
-global size: 8, 0, 1
-global size: 8, 0, 1
-global size: 8, 0, 1
-global size: 8, 0, 1
-global size: 8, 0, 1
-global size: 8, 0, 1
-global size: 8, 0, 1
-global size: 8, 0, 1
-global size: 8, 0, 1
-global size: 8, 0, 1
-local size 0: local id: 0, 0, 0 [4, 0, 1]
-local size 1: local id: 1, 0, 0 [4, 0, 1]
-local size 2: local id: 2, 0, 0 [4, 0, 1]
-local size 3: local id: 3, 0, 0 [4, 0, 1]
-local size 1: local id: 0, 0, 1 [4, 0, 1]
-local size 2: local id: 1, 0, 1 [4, 0, 1]
-local size 3: local id: 2, 0, 1 [4, 0, 1]
-local size 4: local id: 3, 0, 1 [4, 0, 1]
-local size 0: local id: 0, 0, 0 [4, 0, 1]
-local size 1: local id: 1, 0, 0 [4, 0, 1]
-local size 2: local id: 2, 0, 0 [4, 0, 1]
-local size 3: local id: 3, 0, 0 [4, 0, 1]
-local size 1: local id: 0, 0, 1 [4, 0, 1]
-local size 2: local id: 1, 0, 1 [4, 0, 1]
-local size 3: local id: 2, 0, 1 [4, 0, 1]
-local size 4: local id: 3, 0, 1 [4, 0, 1]
-global: 16, 24 - [0;8]
-global: 17, 25 - [1;9]
-global: 18, 26 - [2;10]
-global: 19, 27 - [3;11]
-global: 17, 25 - [1;9]
-global: 18, 26 - [2;10]
-global: 19, 27 - [3;11]
-global: 20, 28 - [4;12]
-global: 0, 8 - [0;0]
-global: 1, 9 - [1;1]
-global: 2, 10 - [2;2]
-global: 3, 11 - [3;3]
-global: 1, 9 - [1;1]
-global: 2, 10 - [2;2]
-global: 3, 11 - [3;3]
-global: 4, 12 - [4;4]
-local: 0, 2 - [0;8]
-local: 4, 6 - [1;9]
-local: 8, 10 - [2;10]
-local: 12, 14 - [3;11]
-local: 1, 3 - [1;9]
-local: 5, 7 - [2;10]
-local: 9, 11 - [3;11]
-local: 13, 15 - [4;12]
-local: 0, 2 - [0;0]
-local: 4, 6 - [1;1]
-local: 8, 10 - [2;2]
-local: 12, 14 - [3;3]
-local: 1, 3 - [1;1]
-local: 5, 7 - [2;2]
-local: 9, 11 - [3;3]
-local: 13, 15 - [4;4]
-global up and low: 14, 15 - [0;8]
-global up and low: 13, 12 - [1;9]
-global up and low: 10, 16 - [2;10]
-global up and low: 24, 23 - [3;11]
-global up and low: 13, 12 - [1;9]
-global up and low: 10, 16 - [2;10]
-global up and low: 24, 23 - [3;11]
-global up and low: 25, 32 - [4;12]
-global up and low: 17, 18 - [0;0]
-global up and low: 20, 19 - [1;1]
-global up and low: 21, 22 - [2;2]
-global up and low: 5, 1 - [3;3]
-global up and low: 20, 19 - [1;1]
-global up and low: 21, 22 - [2;2]
-global up and low: 5, 1 - [3;3]
-global up and low: 4, 8 - [4;4]
-local up and low: 14, 10 - [0;8]
-local up and low: 25, 24 - [1;9]
-local up and low: 15, 16 - [2;10]
-local up and low: 32, 28 - [3;11]
-local up and low: 13, 24 - [1;9]
-local up and low: 16, 23 - [2;10]
-local up and low: 12, 23 - [3;11]
-local up and low: 29, 27 - [4;12]
-local up and low: 17, 21 - [0;0]
-local up and low: 4, 5 - [1;1]
-local up and low: 18, 22 - [2;2]
-local up and low: 8, 11 - [3;3]
-local up and low: 20, 5 - [1;1]
-local up and low: 22, 1 - [2;2]
-local up and low: 19, 1 - [3;3]
-local up and low: 6, 9 - [4;4]
-vec < : 25, 24 - 1 : [1;9]
-vec < : 32, 28 - 3 : [3;11]
-vec < : 16, 23 - 1 : [2;10]
-vec < : 29, 27 - 3 : [4;12]
-vec < : 4, 5 - 1 : [1;1]
-vec < : 8, 11 - 3 : [3;3]
-vec < : 22, 1 - 1 : [2;2]
-vec < : 6, 9 - 3 : [4;4]
-vec > : 14, 10 - 0 : [0;8]
-vec > : 15, 16 - 2 : [2;10]
-vec > : 13, 24 - 0 : [1;9]
-vec > : 12, 23 - 2 : [3;11]
-vec > : 17, 21 - 0 : [0;0]
-vec > : 18, 22 - 2 : [2;2]
-vec > : 20, 5 - 0 : [1;1]
-vec > : 19, 1 - 2 : [3;3]
-in end: 10, 14 - [0;8]
-in end: 25, 24 - [1;9]
-in end: 15, 16 - [2;10]
-in end: 32, 28 - [3;11]
-in end: 13, 24 - [1;9]
-in end: 23, 16 - [2;10]
-in end: 12, 23 - [3;11]
-in end: 29, 27 - [4;12]
-in end: 17, 21 - [0;0]
-in end: 5, 4 - [1;1]
-in end: 18, 22 - [2;2]
-in end: 11, 8 - [3;3]
-in end: 5, 20 - [1;1]
-in end: 22, 1 - [2;2]
-in end: 1, 19 - [3;3]
-in end: 9, 6 - [4;4]
+global: up - 16, low - 18, arr[up] - 14, arr[low] - 12
+global: up - 20, low - 22, arr[up] - 10, arr[low] - 23
+global: up - 24, low - 26, arr[up] - 25, arr[low] - 30
+global: up - 28, low - 30, arr[up] - 26, arr[low] - 27
+global: up - 17, low - 19, arr[up] - 15, arr[low] - 13
+global: up - 21, low - 23, arr[up] - 16, arr[low] - 24
+global: up - 25, low - 27, arr[up] - 32, arr[low] - 31
+global: up - 29, low - 31, arr[up] - 29, arr[low] - 28
+global: up - 0, low - 2, arr[up] - 17, arr[low] - 19
+global: up - 4, low - 6, arr[up] - 21, arr[low] - 1
+global: up - 8, low - 10, arr[up] - 4, arr[low] - 2
+global: up - 12, low - 14, arr[up] - 3, arr[low] - 9
+global: up - 1, low - 3, arr[up] - 18, arr[low] - 20
+global: up - 5, low - 7, arr[up] - 22, arr[low] - 5
+global: up - 9, low - 11, arr[up] - 8, arr[low] - 7
+global: up - 13, low - 15, arr[up] - 6, arr[low] - 11
+local: l_up - 0, l_low - 2, vec[l_up] - 14, vec[l_low] - 12
+local: l_up - 4, l_low - 6, vec[l_up] - 10, vec[l_low] - 23
+local: l_up - 8, l_low - 10, vec[l_up] - 25, vec[l_low] - 30
+local: l_up - 12, l_low - 14, vec[l_up] - 26, vec[l_low] - 27
+local: l_up - 1, l_low - 3, vec[l_up] - 15, vec[l_low] - 13
+local: l_up - 5, l_low - 7, vec[l_up] - 16, vec[l_low] - 24
+local: l_up - 9, l_low - 11, vec[l_up] - 32, vec[l_low] - 31
+local: l_up - 13, l_low - 15, vec[l_up] - 29, vec[l_low] - 28
+local: l_up - 0, l_low - 2, vec[l_up] - 17, vec[l_low] - 19
+local: l_up - 4, l_low - 6, vec[l_up] - 21, vec[l_low] - 1
+local: l_up - 8, l_low - 10, vec[l_up] - 4, vec[l_low] - 2
+local: l_up - 12, l_low - 14, vec[l_up] - 3, vec[l_low] - 9
+local: l_up - 1, l_low - 3, vec[l_up] - 18, vec[l_low] - 20
+local: l_up - 5, l_low - 7, vec[l_up] - 22, vec[l_low] - 5
+local: l_up - 9, l_low - 11, vec[l_up] - 8, vec[l_low] - 7
+local: l_up - 13, l_low - 15, vec[l_up] - 6, vec[l_low] - 11
+equal : 14 > 12 - 0
+equal : 10 > 23 - 1
+equal : 25 > 30 - 2
+equal : 26 > 27 - 3
+equal : 15 > 13 - 0
+equal : 16 > 24 - 1
+equal : 32 > 31 - 2
+equal : 29 > 28 - 3
+equal : 17 > 19 - 0
+equal : 21 > 1 - 1
+equal : 4 > 2 - 2
+equal : 3 > 9 - 3
+equal : 18 > 20 - 0
+equal : 22 > 5 - 1
+equal : 8 > 7 - 2
+equal : 6 > 11 - 3
 GLOBAL RANGE IS 8, 2, 1
 LOCAL RANGE IS 4, 2, 1
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-local_pos is 6
-local_pos is 7
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-local_pos is 6
-local_pos is 7
-global id: 4, 0, 0 - 8
-global id: 5, 0, 0 - 9
-global id: 6, 0, 0 - 10
-global id: 7, 0, 0 - 11
-global id: 4, 1, 0 - 12
-global id: 5, 1, 0 - 13
-global id: 6, 1, 0 - 14
-global id: 7, 1, 0 - 15
-global id: 0, 0, 0 - 0
-global id: 1, 0, 0 - 1
-global id: 2, 0, 0 - 2
-global id: 3, 0, 0 - 3
-global id: 0, 1, 0 - 4
-global id: 1, 1, 0 - 5
-global id: 2, 1, 0 - 6
-global id: 3, 1, 0 - 7
-global size: 8, 0, 2
-global size: 8, 0, 2
-global size: 8, 0, 2
-global size: 8, 0, 2
-global size: 8, 0, 2
-global size: 8, 0, 2
-global size: 8, 0, 2
-global size: 8, 0, 2
-global size: 8, 0, 2
-global size: 8, 0, 2
-global size: 8, 0, 2
-global size: 8, 0, 2
-global size: 8, 0, 2
-global size: 8, 0, 2
-global size: 8, 0, 2
-global size: 8, 0, 2
-local size 0: local id: 0, 0, 0 [4, 0, 2]
-local size 1: local id: 1, 0, 0 [4, 0, 2]
-local size 2: local id: 2, 0, 0 [4, 0, 2]
-local size 3: local id: 3, 0, 0 [4, 0, 2]
-local size 4: local id: 0, 1, 0 [4, 0, 2]
-local size 5: local id: 1, 1, 0 [4, 0, 2]
-local size 6: local id: 2, 1, 0 [4, 0, 2]
-local size 7: local id: 3, 1, 0 [4, 0, 2]
-local size 0: local id: 0, 0, 0 [4, 0, 2]
-local size 1: local id: 1, 0, 0 [4, 0, 2]
-local size 2: local id: 2, 0, 0 [4, 0, 2]
-local size 3: local id: 3, 0, 0 [4, 0, 2]
-local size 4: local id: 0, 1, 0 [4, 0, 2]
-local size 5: local id: 1, 1, 0 [4, 0, 2]
-local size 6: local id: 2, 1, 0 [4, 0, 2]
-local size 7: local id: 3, 1, 0 [4, 0, 2]
-global: 16, 24 - [0;8]
-global: 17, 25 - [1;9]
-global: 18, 26 - [2;10]
-global: 19, 27 - [3;11]
-global: 20, 28 - [4;12]
-global: 21, 29 - [5;13]
-global: 22, 30 - [6;14]
-global: 23, 31 - [7;15]
-global: 0, 8 - [0;0]
-global: 1, 9 - [1;1]
-global: 2, 10 - [2;2]
-global: 3, 11 - [3;3]
-global: 4, 12 - [4;4]
-global: 5, 13 - [5;5]
-global: 6, 14 - [6;6]
-global: 7, 15 - [7;7]
-local: 0, 1 - [0;8]
-local: 4, 5 - [1;9]
-local: 8, 9 - [2;10]
-local: 12, 13 - [3;11]
-local: 2, 3 - [4;12]
-local: 6, 7 - [5;13]
-local: 10, 11 - [6;14]
-local: 14, 15 - [7;15]
-local: 0, 1 - [0;0]
-local: 4, 5 - [1;1]
-local: 8, 9 - [2;2]
-local: 12, 13 - [3;3]
-local: 2, 3 - [4;4]
-local: 6, 7 - [5;5]
-local: 10, 11 - [6;6]
-local: 14, 15 - [7;7]
-global up and low: 10, 14 - [0;8]
-global up and low: 25, 24 - [1;9]
-global up and low: 15, 16 - [2;10]
-global up and low: 32, 28 - [3;11]
-global up and low: 29, 27 - [4;12]
-global up and low: 31, 30 - [5;13]
-global up and low: 26, 29 - [6;14]
-global up and low: 28, 27 - [7;15]
-global up and low: 17, 21 - [0;0]
-global up and low: 5, 4 - [1;1]
-global up and low: 18, 22 - [2;2]
-global up and low: 11, 8 - [3;3]
-global up and low: 9, 6 - [4;4]
-global up and low: 7, 2 - [5;5]
-global up and low: 3, 6 - [6;6]
-global up and low: 11, 9 - [7;7]
-local up and low: 10, 25 - [0;8]
-local up and low: 29, 31 - [1;9]
-local up and low: 14, 24 - [2;10]
-local up and low: 27, 30 - [3;11]
-local up and low: 15, 32 - [4;12]
-local up and low: 26, 28 - [5;13]
-local up and low: 16, 28 - [6;14]
-local up and low: 29, 27 - [7;15]
-local up and low: 17, 5 - [0;0]
-local up and low: 9, 7 - [1;1]
-local up and low: 21, 4 - [2;2]
-local up and low: 6, 2 - [3;3]
-local up and low: 18, 11 - [4;4]
-local up and low: 3, 11 - [5;5]
-local up and low: 22, 8 - [6;6]
-local up and low: 6, 9 - [7;7]
-vec < : 29, 31 - 1 : [1;9]
-vec < : 27, 30 - 3 : [3;11]
-vec < : 26, 28 - 1 : [5;13]
-vec < : 29, 27 - 3 : [7;15]
-vec < : 9, 7 - 1 : [1;1]
-vec < : 6, 2 - 3 : [3;3]
-vec < : 3, 11 - 1 : [5;5]
-vec < : 6, 9 - 3 : [7;7]
-vec > : 10, 25 - 0 : [0;8]
-vec > : 14, 24 - 2 : [2;10]
-vec > : 15, 32 - 0 : [4;12]
-vec > : 16, 28 - 2 : [6;14]
-vec > : 17, 5 - 0 : [0;0]
-vec > : 21, 4 - 2 : [2;2]
-vec > : 18, 11 - 0 : [4;4]
-vec > : 22, 8 - 2 : [6;6]
-in end: 10, 25 - [0;8]
-in end: 31, 29 - [1;9]
-in end: 14, 24 - [2;10]
-in end: 30, 27 - [3;11]
-in end: 15, 32 - [4;12]
-in end: 28, 26 - [5;13]
-in end: 16, 28 - [6;14]
-in end: 29, 27 - [7;15]
-in end: 5, 17 - [0;0]
-in end: 9, 7 - [1;1]
-in end: 4, 21 - [2;2]
-in end: 6, 2 - [3;3]
-in end: 11, 18 - [4;4]
-in end: 11, 3 - [5;5]
-in end: 8, 22 - [6;6]
-in end: 9, 6 - [7;7]
+global: up - 16, low - 17, arr[up] - 12, arr[low] - 13
+global: up - 20, low - 21, arr[up] - 10, arr[low] - 16
+global: up - 24, low - 25, arr[up] - 25, arr[low] - 31
+global: up - 28, low - 29, arr[up] - 26, arr[low] - 28
+global: up - 18, low - 19, arr[up] - 14, arr[low] - 15
+global: up - 22, low - 23, arr[up] - 23, arr[low] - 24
+global: up - 26, low - 27, arr[up] - 30, arr[low] - 32
+global: up - 30, low - 31, arr[up] - 27, arr[low] - 29
+global: up - 0, low - 1, arr[up] - 17, arr[low] - 18
+global: up - 4, low - 5, arr[up] - 1, arr[low] - 5
+global: up - 8, low - 9, arr[up] - 2, arr[low] - 7
+global: up - 12, low - 13, arr[up] - 3, arr[low] - 6
+global: up - 2, low - 3, arr[up] - 19, arr[low] - 20
+global: up - 6, low - 7, arr[up] - 21, arr[low] - 22
+global: up - 10, low - 11, arr[up] - 4, arr[low] - 8
+global: up - 14, low - 15, arr[up] - 9, arr[low] - 11
+local: l_up - 0, l_low - 1, vec[l_up] - 12, vec[l_low] - 13
+local: l_up - 4, l_low - 5, vec[l_up] - 10, vec[l_low] - 16
+local: l_up - 8, l_low - 9, vec[l_up] - 25, vec[l_low] - 31
+local: l_up - 12, l_low - 13, vec[l_up] - 26, vec[l_low] - 28
+local: l_up - 2, l_low - 3, vec[l_up] - 14, vec[l_low] - 15
+local: l_up - 6, l_low - 7, vec[l_up] - 23, vec[l_low] - 24
+local: l_up - 10, l_low - 11, vec[l_up] - 30, vec[l_low] - 32
+local: l_up - 14, l_low - 15, vec[l_up] - 27, vec[l_low] - 29
+local: l_up - 0, l_low - 1, vec[l_up] - 17, vec[l_low] - 18
+local: l_up - 4, l_low - 5, vec[l_up] - 1, vec[l_low] - 5
+local: l_up - 8, l_low - 9, vec[l_up] - 2, vec[l_low] - 7
+local: l_up - 12, l_low - 13, vec[l_up] - 3, vec[l_low] - 6
+local: l_up - 2, l_low - 3, vec[l_up] - 19, vec[l_low] - 20
+local: l_up - 6, l_low - 7, vec[l_up] - 21, vec[l_low] - 22
+local: l_up - 10, l_low - 11, vec[l_up] - 4, vec[l_low] - 8
+local: l_up - 14, l_low - 15, vec[l_up] - 9, vec[l_low] - 11
+equal : 12 > 13 - 0
+equal : 10 > 16 - 1
+equal : 25 > 31 - 2
+equal : 26 > 28 - 3
+equal : 14 > 15 - 0
+equal : 23 > 24 - 1
+equal : 30 > 32 - 2
+equal : 27 > 29 - 3
+equal : 17 > 18 - 0
+equal : 1 > 5 - 1
+equal : 2 > 7 - 2
+equal : 3 > 6 - 3
+equal : 19 > 20 - 0
+equal : 21 > 22 - 1
+equal : 4 > 8 - 2
+equal : 9 > 11 - 3
 GLOBAL RANGE IS 4, 1, 4
 LOCAL RANGE IS 2, 1, 4
-local_pos is 0
-local_pos is 1
-local_pos is 1
-local_pos is 2
-local_pos is 2
-local_pos is 3
-local_pos is 3
-local_pos is 4
-local_pos is 0
-local_pos is 1
-local_pos is 1
-local_pos is 2
-local_pos is 2
-local_pos is 3
-local_pos is 3
-local_pos is 4
-global id: 2, 0, 0 - 8
-global id: 3, 0, 0 - 9
-global id: 2, 0, 1 - 9
-global id: 3, 0, 1 - 10
-global id: 2, 0, 2 - 10
-global id: 3, 0, 2 - 11
-global id: 2, 0, 3 - 11
-global id: 3, 0, 3 - 12
-global id: 0, 0, 0 - 0
-global id: 1, 0, 0 - 1
-global id: 0, 0, 1 - 1
-global id: 1, 0, 1 - 2
-global id: 0, 0, 2 - 2
-global id: 1, 0, 2 - 3
-global id: 0, 0, 3 - 3
-global id: 1, 0, 3 - 4
-global size: 4, 0, 1
-global size: 4, 0, 1
-global size: 4, 0, 1
-global size: 4, 0, 1
-global size: 4, 0, 1
-global size: 4, 0, 1
-global size: 4, 0, 1
-global size: 4, 0, 1
-global size: 4, 0, 1
-global size: 4, 0, 1
-global size: 4, 0, 1
-global size: 4, 0, 1
-global size: 4, 0, 1
-global size: 4, 0, 1
-global size: 4, 0, 1
-global size: 4, 0, 1
-local size 0: local id: 0, 0, 0 [2, 0, 1]
-local size 1: local id: 1, 0, 0 [2, 0, 1]
-local size 1: local id: 0, 0, 1 [2, 0, 1]
-local size 2: local id: 1, 0, 1 [2, 0, 1]
-local size 2: local id: 0, 0, 2 [2, 0, 1]
-local size 3: local id: 1, 0, 2 [2, 0, 1]
-local size 3: local id: 0, 0, 3 [2, 0, 1]
-local size 4: local id: 1, 0, 3 [2, 0, 1]
-local size 0: local id: 0, 0, 0 [2, 0, 1]
-local size 1: local id: 1, 0, 0 [2, 0, 1]
-local size 1: local id: 0, 0, 1 [2, 0, 1]
-local size 2: local id: 1, 0, 1 [2, 0, 1]
-local size 2: local id: 0, 0, 2 [2, 0, 1]
-local size 3: local id: 1, 0, 2 [2, 0, 1]
-local size 3: local id: 0, 0, 3 [2, 0, 1]
-local size 4: local id: 1, 0, 3 [2, 0, 1]
-global: 16, 24 - [0;8]
-global: 17, 25 - [1;9]
-global: 17, 25 - [1;9]
-global: 18, 26 - [2;10]
-global: 18, 26 - [2;10]
-global: 19, 27 - [3;11]
-global: 19, 27 - [3;11]
-global: 20, 28 - [4;12]
-global: 0, 8 - [0;0]
-global: 1, 9 - [1;1]
-global: 1, 9 - [1;1]
-global: 2, 10 - [2;2]
-global: 2, 10 - [2;2]
-global: 3, 11 - [3;3]
-global: 3, 11 - [3;3]
-global: 4, 12 - [4;4]
-local: 0, 4 - [0;8]
-local: 8, 12 - [1;9]
-local: 1, 5 - [1;9]
-local: 9, 13 - [2;10]
-local: 2, 6 - [2;10]
-local: 10, 14 - [3;11]
-local: 3, 7 - [3;11]
-local: 11, 15 - [4;12]
-local: 0, 4 - [0;0]
-local: 8, 12 - [1;1]
-local: 1, 5 - [1;1]
-local: 9, 13 - [2;2]
-local: 2, 6 - [2;2]
-local: 10, 14 - [3;3]
-local: 3, 7 - [3;3]
-local: 11, 15 - [4;4]
-global up and low: 10, 25 - [0;8]
-global up and low: 31, 29 - [1;9]
-global up and low: 31, 29 - [1;9]
-global up and low: 14, 24 - [2;10]
-global up and low: 14, 24 - [2;10]
-global up and low: 30, 27 - [3;11]
-global up and low: 30, 27 - [3;11]
-global up and low: 15, 32 - [4;12]
-global up and low: 5, 17 - [0;0]
-global up and low: 9, 7 - [1;1]
-global up and low: 9, 7 - [1;1]
-global up and low: 4, 21 - [2;2]
-global up and low: 4, 21 - [2;2]
-global up and low: 6, 2 - [3;3]
-global up and low: 6, 2 - [3;3]
-global up and low: 11, 18 - [4;4]
-local up and low: 10, 15 - [0;8]
-local up and low: 25, 32 - [1;9]
-local up and low: 31, 29 - [1;9]
-local up and low: 29, 27 - [2;10]
-local up and low: 14, 28 - [2;10]
-local up and low: 24, 29 - [3;11]
-local up and low: 30, 26 - [3;11]
-local up and low: 27, 27 - [4;12]
-local up and low: 5, 11 - [0;0]
-local up and low: 17, 18 - [1;1]
-local up and low: 9, 7 - [1;1]
-local up and low: 7, 2 - [2;2]
-local up and low: 4, 11 - [2;2]
-local up and low: 21, 9 - [3;3]
-local up and low: 6, 3 - [3;3]
-local up and low: 2, 6 - [4;4]
-vec < : 25, 32 - 1 : [1;9]
-vec < : 29, 27 - 1 : [2;10]
-vec < : 24, 29 - 1 : [3;11]
-vec < : 27, 27 - 1 : [4;12]
-vec < : 17, 18 - 1 : [1;1]
-vec < : 7, 2 - 1 : [2;2]
-vec < : 21, 9 - 1 : [3;3]
-vec < : 2, 6 - 1 : [4;4]
-vec > : 10, 15 - 0 : [0;8]
-vec > : 31, 29 - 0 : [1;9]
-vec > : 14, 28 - 0 : [2;10]
-vec > : 30, 26 - 0 : [3;11]
-vec > : 5, 11 - 0 : [0;0]
-vec > : 9, 7 - 0 : [1;1]
-vec > : 4, 11 - 0 : [2;2]
-vec > : 6, 3 - 0 : [3;3]
-in end: 10, 15 - [0;8]
-in end: 32, 25 - [1;9]
-in end: 29, 31 - [1;9]
-in end: 29, 27 - [2;10]
-in end: 14, 28 - [2;10]
-in end: 29, 24 - [3;11]
-in end: 26, 30 - [3;11]
-in end: 27, 27 - [4;12]
-in end: 5, 11 - [0;0]
-in end: 18, 17 - [1;1]
-in end: 7, 9 - [1;1]
-in end: 7, 2 - [2;2]
-in end: 4, 11 - [2;2]
-in end: 21, 9 - [3;3]
-in end: 3, 6 - [3;3]
-in end: 6, 2 - [4;4]
+global: up - 16, low - 20, arr[up] - 12, arr[low] - 10
+global: up - 24, low - 28, arr[up] - 25, arr[low] - 26
+global: up - 17, low - 21, arr[up] - 13, arr[low] - 16
+global: up - 25, low - 29, arr[up] - 31, arr[low] - 28
+global: up - 18, low - 22, arr[up] - 14, arr[low] - 23
+global: up - 26, low - 30, arr[up] - 30, arr[low] - 27
+global: up - 19, low - 23, arr[up] - 15, arr[low] - 24
+global: up - 27, low - 31, arr[up] - 32, arr[low] - 29
+global: up - 0, low - 4, arr[up] - 17, arr[low] - 1
+global: up - 8, low - 12, arr[up] - 2, arr[low] - 3
+global: up - 1, low - 5, arr[up] - 18, arr[low] - 5
+global: up - 9, low - 13, arr[up] - 7, arr[low] - 6
+global: up - 2, low - 6, arr[up] - 19, arr[low] - 21
+global: up - 10, low - 14, arr[up] - 4, arr[low] - 9
+global: up - 3, low - 7, arr[up] - 20, arr[low] - 22
+global: up - 11, low - 15, arr[up] - 8, arr[low] - 11
+local: l_up - 0, l_low - 4, vec[l_up] - 12, vec[l_low] - 10
+local: l_up - 8, l_low - 12, vec[l_up] - 25, vec[l_low] - 26
+local: l_up - 1, l_low - 5, vec[l_up] - 13, vec[l_low] - 16
+local: l_up - 9, l_low - 13, vec[l_up] - 31, vec[l_low] - 28
+local: l_up - 2, l_low - 6, vec[l_up] - 14, vec[l_low] - 23
+local: l_up - 10, l_low - 14, vec[l_up] - 30, vec[l_low] - 27
+local: l_up - 3, l_low - 7, vec[l_up] - 15, vec[l_low] - 24
+local: l_up - 11, l_low - 15, vec[l_up] - 32, vec[l_low] - 29
+local: l_up - 0, l_low - 4, vec[l_up] - 17, vec[l_low] - 1
+local: l_up - 8, l_low - 12, vec[l_up] - 2, vec[l_low] - 3
+local: l_up - 1, l_low - 5, vec[l_up] - 18, vec[l_low] - 5
+local: l_up - 9, l_low - 13, vec[l_up] - 7, vec[l_low] - 6
+local: l_up - 2, l_low - 6, vec[l_up] - 19, vec[l_low] - 21
+local: l_up - 10, l_low - 14, vec[l_up] - 4, vec[l_low] - 9
+local: l_up - 3, l_low - 7, vec[l_up] - 20, vec[l_low] - 22
+local: l_up - 11, l_low - 15, vec[l_up] - 8, vec[l_low] - 11
+equal : 12 > 10 - 0
+equal : 25 > 26 - 1
+equal : 13 > 16 - 0
+equal : 31 > 28 - 1
+equal : 14 > 23 - 0
+equal : 30 > 27 - 1
+equal : 15 > 24 - 0
+equal : 32 > 29 - 1
+equal : 17 > 1 - 0
+equal : 2 > 3 - 1
+equal : 18 > 5 - 0
+equal : 7 > 6 - 1
+equal : 19 > 21 - 0
+equal : 4 > 9 - 1
+equal : 20 > 22 - 0
+equal : 8 > 11 - 1
 GLOBAL RANGE IS 4, 2, 2
 LOCAL RANGE IS 2, 2, 2
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-global id: 2, 0, 0 - 8
-global id: 3, 0, 0 - 9
-global id: 2, 1, 0 - 10
-global id: 3, 1, 0 - 11
-global id: 2, 0, 1 - 10
-global id: 3, 0, 1 - 11
-global id: 2, 1, 1 - 12
-global id: 3, 1, 1 - 13
-global id: 0, 0, 0 - 0
-global id: 1, 0, 0 - 1
-global id: 0, 1, 0 - 2
-global id: 1, 1, 0 - 3
-global id: 0, 0, 1 - 2
-global id: 1, 0, 1 - 3
-global id: 0, 1, 1 - 4
-global id: 1, 1, 1 - 5
-global size: 4, 0, 2
-global size: 4, 0, 2
-global size: 4, 0, 2
-global size: 4, 0, 2
-global size: 4, 0, 2
-global size: 4, 0, 2
-global size: 4, 0, 2
-global size: 4, 0, 2
-global size: 4, 0, 2
-global size: 4, 0, 2
-global size: 4, 0, 2
-global size: 4, 0, 2
-global size: 4, 0, 2
-global size: 4, 0, 2
-global size: 4, 0, 2
-global size: 4, 0, 2
-local size 0: local id: 0, 0, 0 [2, 0, 2]
-local size 1: local id: 1, 0, 0 [2, 0, 2]
-local size 2: local id: 0, 1, 0 [2, 0, 2]
-local size 3: local id: 1, 1, 0 [2, 0, 2]
-local size 2: local id: 0, 0, 1 [2, 0, 2]
-local size 3: local id: 1, 0, 1 [2, 0, 2]
-local size 4: local id: 0, 1, 1 [2, 0, 2]
-local size 5: local id: 1, 1, 1 [2, 0, 2]
-local size 0: local id: 0, 0, 0 [2, 0, 2]
-local size 1: local id: 1, 0, 0 [2, 0, 2]
-local size 2: local id: 0, 1, 0 [2, 0, 2]
-local size 3: local id: 1, 1, 0 [2, 0, 2]
-local size 2: local id: 0, 0, 1 [2, 0, 2]
-local size 3: local id: 1, 0, 1 [2, 0, 2]
-local size 4: local id: 0, 1, 1 [2, 0, 2]
-local size 5: local id: 1, 1, 1 [2, 0, 2]
-global: 16, 24 - [0;8]
-global: 17, 25 - [1;9]
-global: 18, 26 - [2;10]
-global: 19, 27 - [3;11]
-global: 18, 26 - [2;10]
-global: 19, 27 - [3;11]
-global: 20, 28 - [4;12]
-global: 21, 29 - [5;13]
-global: 0, 8 - [0;0]
-global: 1, 9 - [1;1]
-global: 2, 10 - [2;2]
-global: 3, 11 - [3;3]
-global: 2, 10 - [2;2]
-global: 3, 11 - [3;3]
-global: 4, 12 - [4;4]
-global: 5, 13 - [5;5]
-local: 0, 2 - [0;8]
-local: 8, 10 - [1;9]
-local: 4, 6 - [2;10]
-local: 12, 14 - [3;11]
-local: 1, 3 - [2;10]
-local: 9, 11 - [3;11]
-local: 5, 7 - [4;12]
-local: 13, 15 - [5;13]
-local: 0, 2 - [0;0]
-local: 8, 10 - [1;1]
-local: 4, 6 - [2;2]
-local: 12, 14 - [3;3]
-local: 1, 3 - [2;2]
-local: 9, 11 - [3;3]
-local: 5, 7 - [4;4]
-local: 13, 15 - [5;5]
-global up and low: 10, 15 - [0;8]
-global up and low: 32, 25 - [1;9]
-global up and low: 29, 27 - [2;10]
-global up and low: 29, 24 - [3;11]
-global up and low: 29, 27 - [2;10]
-global up and low: 29, 24 - [3;11]
-global up and low: 27, 27 - [4;12]
-global up and low: 28, 26 - [5;13]
-global up and low: 5, 11 - [0;0]
-global up and low: 18, 17 - [1;1]
-global up and low: 7, 2 - [2;2]
-global up and low: 21, 9 - [3;3]
-global up and low: 7, 2 - [2;2]
-global up and low: 21, 9 - [3;3]
-global up and low: 6, 2 - [4;4]
-global up and low: 11, 3 - [5;5]
-local up and low: 10, 29 - [0;8]
-local up and low: 15, 27 - [1;9]
-local up and low: 27, 28 - [2;10]
-local up and low: 27, 24 - [3;11]
-local up and low: 32, 29 - [2;10]
-local up and low: 25, 24 - [3;11]
-local up and low: 28, 30 - [4;12]
-local up and low: 26, 27 - [5;13]
-local up and low: 5, 7 - [0;0]
-local up and low: 11, 2 - [1;1]
-local up and low: 6, 11 - [2;2]
-local up and low: 2, 9 - [3;3]
-local up and low: 18, 21 - [2;2]
-local up and low: 17, 9 - [3;3]
-local up and low: 11, 6 - [4;4]
-local up and low: 3, 2 - [5;5]
-vec < : 15, 27 - 1 : [1;9]
-vec < : 27, 24 - 1 : [3;11]
-vec < : 25, 24 - 1 : [3;11]
-vec < : 26, 27 - 1 : [5;13]
-vec < : 11, 2 - 1 : [1;1]
-vec < : 2, 9 - 1 : [3;3]
-vec < : 17, 9 - 1 : [3;3]
-vec < : 3, 2 - 1 : [5;5]
-vec > : 10, 29 - 0 : [0;8]
-vec > : 27, 28 - 0 : [2;10]
-vec > : 32, 29 - 0 : [2;10]
-vec > : 28, 30 - 0 : [4;12]
-vec > : 5, 7 - 0 : [0;0]
-vec > : 6, 11 - 0 : [2;2]
-vec > : 18, 21 - 0 : [2;2]
-vec > : 11, 6 - 0 : [4;4]
-in end: 10, 29 - [0;8]
-in end: 27, 15 - [1;9]
-in end: 27, 28 - [2;10]
-in end: 27, 24 - [3;11]
-in end: 29, 32 - [2;10]
-in end: 25, 24 - [3;11]
-in end: 28, 30 - [4;12]
-in end: 27, 26 - [5;13]
-in end: 5, 7 - [0;0]
-in end: 11, 2 - [1;1]
-in end: 6, 11 - [2;2]
-in end: 9, 2 - [3;3]
-in end: 18, 21 - [2;2]
-in end: 17, 9 - [3;3]
-in end: 6, 11 - [4;4]
-in end: 3, 2 - [5;5]
+global: up - 16, low - 18, arr[up] - 10, arr[low] - 14
+global: up - 24, low - 26, arr[up] - 25, arr[low] - 27
+global: up - 20, low - 22, arr[up] - 12, arr[low] - 23
+global: up - 28, low - 30, arr[up] - 26, arr[low] - 30
+global: up - 17, low - 19, arr[up] - 13, arr[low] - 15
+global: up - 25, low - 27, arr[up] - 28, arr[low] - 29
+global: up - 21, low - 23, arr[up] - 16, arr[low] - 24
+global: up - 29, low - 31, arr[up] - 31, arr[low] - 32
+global: up - 0, low - 2, arr[up] - 1, arr[low] - 19
+global: up - 8, low - 10, arr[up] - 2, arr[low] - 4
+global: up - 4, low - 6, arr[up] - 17, arr[low] - 21
+global: up - 12, low - 14, arr[up] - 3, arr[low] - 9
+global: up - 1, low - 3, arr[up] - 5, arr[low] - 20
+global: up - 9, low - 11, arr[up] - 6, arr[low] - 8
+global: up - 5, low - 7, arr[up] - 18, arr[low] - 22
+global: up - 13, low - 15, arr[up] - 7, arr[low] - 11
+local: l_up - 0, l_low - 2, vec[l_up] - 10, vec[l_low] - 14
+local: l_up - 8, l_low - 10, vec[l_up] - 25, vec[l_low] - 27
+local: l_up - 4, l_low - 6, vec[l_up] - 12, vec[l_low] - 23
+local: l_up - 12, l_low - 14, vec[l_up] - 26, vec[l_low] - 30
+local: l_up - 1, l_low - 3, vec[l_up] - 13, vec[l_low] - 15
+local: l_up - 9, l_low - 11, vec[l_up] - 28, vec[l_low] - 29
+local: l_up - 5, l_low - 7, vec[l_up] - 16, vec[l_low] - 24
+local: l_up - 13, l_low - 15, vec[l_up] - 31, vec[l_low] - 32
+local: l_up - 0, l_low - 2, vec[l_up] - 1, vec[l_low] - 19
+local: l_up - 8, l_low - 10, vec[l_up] - 2, vec[l_low] - 4
+local: l_up - 4, l_low - 6, vec[l_up] - 17, vec[l_low] - 21
+local: l_up - 12, l_low - 14, vec[l_up] - 3, vec[l_low] - 9
+local: l_up - 1, l_low - 3, vec[l_up] - 5, vec[l_low] - 20
+local: l_up - 9, l_low - 11, vec[l_up] - 6, vec[l_low] - 8
+local: l_up - 5, l_low - 7, vec[l_up] - 18, vec[l_low] - 22
+local: l_up - 13, l_low - 15, vec[l_up] - 7, vec[l_low] - 11
+equal : 10 > 14 - 0
+equal : 25 > 27 - 1
+equal : 12 > 23 - 0
+equal : 26 > 30 - 1
+equal : 13 > 15 - 0
+equal : 28 > 29 - 1
+equal : 16 > 24 - 0
+equal : 31 > 32 - 1
+equal : 1 > 19 - 0
+equal : 2 > 4 - 1
+equal : 17 > 21 - 0
+equal : 3 > 9 - 1
+equal : 5 > 20 - 0
+equal : 6 > 8 - 1
+equal : 18 > 22 - 0
+equal : 7 > 11 - 1
 GLOBAL RANGE IS 4, 4, 1
 LOCAL RANGE IS 2, 4, 1
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-local_pos is 6
-local_pos is 7
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-local_pos is 6
-local_pos is 7
-global id: 2, 0, 0 - 8
-global id: 3, 0, 0 - 9
-global id: 2, 1, 0 - 10
-global id: 3, 1, 0 - 11
-global id: 2, 2, 0 - 12
-global id: 3, 2, 0 - 13
-global id: 2, 3, 0 - 14
-global id: 3, 3, 0 - 15
-global id: 0, 0, 0 - 0
-global id: 1, 0, 0 - 1
-global id: 0, 1, 0 - 2
-global id: 1, 1, 0 - 3
-global id: 0, 2, 0 - 4
-global id: 1, 2, 0 - 5
-global id: 0, 3, 0 - 6
-global id: 1, 3, 0 - 7
-global size: 4, 0, 4
-global size: 4, 0, 4
-global size: 4, 0, 4
-global size: 4, 0, 4
-global size: 4, 0, 4
-global size: 4, 0, 4
-global size: 4, 0, 4
-global size: 4, 0, 4
-global size: 4, 0, 4
-global size: 4, 0, 4
-global size: 4, 0, 4
-global size: 4, 0, 4
-global size: 4, 0, 4
-global size: 4, 0, 4
-global size: 4, 0, 4
-global size: 4, 0, 4
-local size 0: local id: 0, 0, 0 [2, 0, 4]
-local size 1: local id: 1, 0, 0 [2, 0, 4]
-local size 2: local id: 0, 1, 0 [2, 0, 4]
-local size 3: local id: 1, 1, 0 [2, 0, 4]
-local size 4: local id: 0, 2, 0 [2, 0, 4]
-local size 5: local id: 1, 2, 0 [2, 0, 4]
-local size 6: local id: 0, 3, 0 [2, 0, 4]
-local size 7: local id: 1, 3, 0 [2, 0, 4]
-local size 0: local id: 0, 0, 0 [2, 0, 4]
-local size 1: local id: 1, 0, 0 [2, 0, 4]
-local size 2: local id: 0, 1, 0 [2, 0, 4]
-local size 3: local id: 1, 1, 0 [2, 0, 4]
-local size 4: local id: 0, 2, 0 [2, 0, 4]
-local size 5: local id: 1, 2, 0 [2, 0, 4]
-local size 6: local id: 0, 3, 0 [2, 0, 4]
-local size 7: local id: 1, 3, 0 [2, 0, 4]
-global: 16, 24 - [0;8]
-global: 17, 25 - [1;9]
-global: 18, 26 - [2;10]
-global: 19, 27 - [3;11]
-global: 20, 28 - [4;12]
-global: 21, 29 - [5;13]
-global: 22, 30 - [6;14]
-global: 23, 31 - [7;15]
-global: 0, 8 - [0;0]
-global: 1, 9 - [1;1]
-global: 2, 10 - [2;2]
-global: 3, 11 - [3;3]
-global: 4, 12 - [4;4]
-global: 5, 13 - [5;5]
-global: 6, 14 - [6;6]
-global: 7, 15 - [7;7]
-local: 0, 1 - [0;8]
-local: 8, 9 - [1;9]
-local: 2, 3 - [2;10]
-local: 10, 11 - [3;11]
-local: 4, 5 - [4;12]
-local: 12, 13 - [5;13]
-local: 6, 7 - [6;14]
-local: 14, 15 - [7;15]
-local: 0, 1 - [0;0]
-local: 8, 9 - [1;1]
-local: 2, 3 - [2;2]
-local: 10, 11 - [3;3]
-local: 4, 5 - [4;4]
-local: 12, 13 - [5;5]
-local: 6, 7 - [6;6]
-local: 14, 15 - [7;7]
-global up and low: 10, 29 - [0;8]
-global up and low: 27, 15 - [1;9]
-global up and low: 27, 28 - [2;10]
-global up and low: 27, 24 - [3;11]
-global up and low: 28, 30 - [4;12]
-global up and low: 27, 26 - [5;13]
-global up and low: 16, 28 - [6;14]
-global up and low: 29, 27 - [7;15]
-global up and low: 5, 7 - [0;0]
-global up and low: 11, 2 - [1;1]
-global up and low: 6, 11 - [2;2]
-global up and low: 9, 2 - [3;3]
-global up and low: 6, 11 - [4;4]
-global up and low: 3, 2 - [5;5]
-global up and low: 8, 22 - [6;6]
-global up and low: 9, 6 - [7;7]
-local up and low: 10, 27 - [0;8]
-local up and low: 29, 15 - [1;9]
-local up and low: 27, 27 - [2;10]
-local up and low: 28, 24 - [3;11]
-local up and low: 28, 27 - [4;12]
-local up and low: 30, 26 - [5;13]
-local up and low: 16, 29 - [6;14]
-local up and low: 28, 27 - [7;15]
-local up and low: 5, 11 - [0;0]
-local up and low: 7, 2 - [1;1]
-local up and low: 6, 9 - [2;2]
-local up and low: 11, 2 - [3;3]
-local up and low: 6, 3 - [4;4]
-local up and low: 11, 2 - [5;5]
-local up and low: 8, 9 - [6;6]
-local up and low: 22, 6 - [7;7]
-vec < : 29, 15 - 1 : [1;9]
-vec < : 28, 24 - 1 : [3;11]
-vec < : 30, 26 - 1 : [5;13]
-vec < : 28, 27 - 1 : [7;15]
-vec < : 7, 2 - 1 : [1;1]
-vec < : 11, 2 - 1 : [3;3]
-vec < : 11, 2 - 1 : [5;5]
-vec < : 22, 6 - 1 : [7;7]
-vec > : 10, 27 - 0 : [0;8]
-vec > : 27, 27 - 0 : [2;10]
-vec > : 28, 27 - 0 : [4;12]
-vec > : 16, 29 - 0 : [6;14]
-vec > : 5, 11 - 0 : [0;0]
-vec > : 6, 9 - 0 : [2;2]
-vec > : 6, 3 - 0 : [4;4]
-vec > : 8, 9 - 0 : [6;6]
-in end: 10, 27 - [0;8]
-in end: 29, 15 - [1;9]
-in end: 27, 27 - [2;10]
-in end: 28, 24 - [3;11]
-in end: 27, 28 - [4;12]
-in end: 30, 26 - [5;13]
-in end: 16, 29 - [6;14]
-in end: 28, 27 - [7;15]
-in end: 5, 11 - [0;0]
-in end: 7, 2 - [1;1]
-in end: 6, 9 - [2;2]
-in end: 11, 2 - [3;3]
-in end: 3, 6 - [4;4]
-in end: 11, 2 - [5;5]
-in end: 8, 9 - [6;6]
-in end: 22, 6 - [7;7]
+global: up - 16, low - 17, arr[up] - 10, arr[low] - 13
+global: up - 24, low - 25, arr[up] - 25, arr[low] - 28
+global: up - 18, low - 19, arr[up] - 14, arr[low] - 15
+global: up - 26, low - 27, arr[up] - 27, arr[low] - 29
+global: up - 20, low - 21, arr[up] - 12, arr[low] - 16
+global: up - 28, low - 29, arr[up] - 26, arr[low] - 31
+global: up - 22, low - 23, arr[up] - 23, arr[low] - 24
+global: up - 30, low - 31, arr[up] - 30, arr[low] - 32
+global: up - 0, low - 1, arr[up] - 1, arr[low] - 5
+global: up - 8, low - 9, arr[up] - 2, arr[low] - 6
+global: up - 2, low - 3, arr[up] - 19, arr[low] - 20
+global: up - 10, low - 11, arr[up] - 4, arr[low] - 8
+global: up - 4, low - 5, arr[up] - 17, arr[low] - 18
+global: up - 12, low - 13, arr[up] - 3, arr[low] - 7
+global: up - 6, low - 7, arr[up] - 21, arr[low] - 22
+global: up - 14, low - 15, arr[up] - 9, arr[low] - 11
+local: l_up - 0, l_low - 1, vec[l_up] - 10, vec[l_low] - 13
+local: l_up - 8, l_low - 9, vec[l_up] - 25, vec[l_low] - 28
+local: l_up - 2, l_low - 3, vec[l_up] - 14, vec[l_low] - 15
+local: l_up - 10, l_low - 11, vec[l_up] - 27, vec[l_low] - 29
+local: l_up - 4, l_low - 5, vec[l_up] - 12, vec[l_low] - 16
+local: l_up - 12, l_low - 13, vec[l_up] - 26, vec[l_low] - 31
+local: l_up - 6, l_low - 7, vec[l_up] - 23, vec[l_low] - 24
+local: l_up - 14, l_low - 15, vec[l_up] - 30, vec[l_low] - 32
+local: l_up - 0, l_low - 1, vec[l_up] - 1, vec[l_low] - 5
+local: l_up - 8, l_low - 9, vec[l_up] - 2, vec[l_low] - 6
+local: l_up - 2, l_low - 3, vec[l_up] - 19, vec[l_low] - 20
+local: l_up - 10, l_low - 11, vec[l_up] - 4, vec[l_low] - 8
+local: l_up - 4, l_low - 5, vec[l_up] - 17, vec[l_low] - 18
+local: l_up - 12, l_low - 13, vec[l_up] - 3, vec[l_low] - 7
+local: l_up - 6, l_low - 7, vec[l_up] - 21, vec[l_low] - 22
+local: l_up - 14, l_low - 15, vec[l_up] - 9, vec[l_low] - 11
+equal : 10 > 13 - 0
+equal : 25 > 28 - 1
+equal : 14 > 15 - 0
+equal : 27 > 29 - 1
+equal : 12 > 16 - 0
+equal : 26 > 31 - 1
+equal : 23 > 24 - 0
+equal : 30 > 32 - 1
+equal : 1 > 5 - 0
+equal : 2 > 6 - 1
+equal : 19 > 20 - 0
+equal : 4 > 8 - 1
+equal : 17 > 18 - 0
+equal : 3 > 7 - 1
+equal : 21 > 22 - 0
+equal : 9 > 11 - 1
 GLOBAL RANGE IS 2, 1, 8
 LOCAL RANGE IS 1, 1, 8
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-local_pos is 6
-local_pos is 7
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-local_pos is 6
-local_pos is 7
-global id: 1, 0, 0 - 8
-global id: 1, 0, 1 - 9
-global id: 1, 0, 2 - 10
-global id: 1, 0, 3 - 11
-global id: 1, 0, 4 - 12
-global id: 1, 0, 5 - 13
-global id: 1, 0, 6 - 14
-global id: 1, 0, 7 - 15
-global id: 0, 0, 0 - 0
-global id: 0, 0, 1 - 1
-global id: 0, 0, 2 - 2
-global id: 0, 0, 3 - 3
-global id: 0, 0, 4 - 4
-global id: 0, 0, 5 - 5
-global id: 0, 0, 6 - 6
-global id: 0, 0, 7 - 7
-global size: 2, 0, 1
-global size: 2, 0, 1
-global size: 2, 0, 1
-global size: 2, 0, 1
-global size: 2, 0, 1
-global size: 2, 0, 1
-global size: 2, 0, 1
-global size: 2, 0, 1
-global size: 2, 0, 1
-global size: 2, 0, 1
-global size: 2, 0, 1
-global size: 2, 0, 1
-global size: 2, 0, 1
-global size: 2, 0, 1
-global size: 2, 0, 1
-global size: 2, 0, 1
-local size 0: local id: 0, 0, 0 [1, 0, 1]
-local size 1: local id: 0, 0, 1 [1, 0, 1]
-local size 2: local id: 0, 0, 2 [1, 0, 1]
-local size 3: local id: 0, 0, 3 [1, 0, 1]
-local size 4: local id: 0, 0, 4 [1, 0, 1]
-local size 5: local id: 0, 0, 5 [1, 0, 1]
-local size 6: local id: 0, 0, 6 [1, 0, 1]
-local size 7: local id: 0, 0, 7 [1, 0, 1]
-local size 0: local id: 0, 0, 0 [1, 0, 1]
-local size 1: local id: 0, 0, 1 [1, 0, 1]
-local size 2: local id: 0, 0, 2 [1, 0, 1]
-local size 3: local id: 0, 0, 3 [1, 0, 1]
-local size 4: local id: 0, 0, 4 [1, 0, 1]
-local size 5: local id: 0, 0, 5 [1, 0, 1]
-local size 6: local id: 0, 0, 6 [1, 0, 1]
-local size 7: local id: 0, 0, 7 [1, 0, 1]
-global: 16, 24 - [0;8]
-global: 17, 25 - [1;9]
-global: 18, 26 - [2;10]
-global: 19, 27 - [3;11]
-global: 20, 28 - [4;12]
-global: 21, 29 - [5;13]
-global: 22, 30 - [6;14]
-global: 23, 31 - [7;15]
-global: 0, 8 - [0;0]
-global: 1, 9 - [1;1]
-global: 2, 10 - [2;2]
-global: 3, 11 - [3;3]
-global: 4, 12 - [4;4]
-global: 5, 13 - [5;5]
-global: 6, 14 - [6;6]
-global: 7, 15 - [7;7]
-local: 0, 8 - [0;8]
-local: 1, 9 - [1;9]
-local: 2, 10 - [2;10]
-local: 3, 11 - [3;11]
-local: 4, 12 - [4;12]
-local: 5, 13 - [5;13]
-local: 6, 14 - [6;14]
-local: 7, 15 - [7;15]
-local: 0, 8 - [0;0]
-local: 1, 9 - [1;1]
-local: 2, 10 - [2;2]
-local: 3, 11 - [3;3]
-local: 4, 12 - [4;4]
-local: 5, 13 - [5;5]
-local: 6, 14 - [6;6]
-local: 7, 15 - [7;7]
-global up and low: 10, 27 - [0;8]
-global up and low: 29, 15 - [1;9]
-global up and low: 27, 27 - [2;10]
-global up and low: 28, 24 - [3;11]
-global up and low: 27, 28 - [4;12]
-global up and low: 30, 26 - [5;13]
-global up and low: 16, 29 - [6;14]
-global up and low: 28, 27 - [7;15]
-global up and low: 5, 11 - [0;0]
-global up and low: 7, 2 - [1;1]
-global up and low: 6, 9 - [2;2]
-global up and low: 11, 2 - [3;3]
-global up and low: 3, 6 - [4;4]
-global up and low: 11, 2 - [5;5]
-global up and low: 8, 9 - [6;6]
-global up and low: 22, 6 - [7;7]
-local up and low: 10, 27 - [0;8]
-local up and low: 29, 15 - [1;9]
-local up and low: 27, 27 - [2;10]
-local up and low: 28, 24 - [3;11]
-local up and low: 27, 28 - [4;12]
-local up and low: 30, 26 - [5;13]
-local up and low: 16, 29 - [6;14]
-local up and low: 28, 27 - [7;15]
-local up and low: 5, 11 - [0;0]
-local up and low: 7, 2 - [1;1]
-local up and low: 6, 9 - [2;2]
-local up and low: 11, 2 - [3;3]
-local up and low: 3, 6 - [4;4]
-local up and low: 11, 2 - [5;5]
-local up and low: 8, 9 - [6;6]
-local up and low: 22, 6 - [7;7]
-vec > : 10, 27 - 0 : [0;8]
-vec > : 29, 15 - 0 : [1;9]
-vec > : 27, 27 - 0 : [2;10]
-vec > : 28, 24 - 0 : [3;11]
-vec > : 27, 28 - 0 : [4;12]
-vec > : 30, 26 - 0 : [5;13]
-vec > : 16, 29 - 0 : [6;14]
-vec > : 28, 27 - 0 : [7;15]
-vec > : 5, 11 - 0 : [0;0]
-vec > : 7, 2 - 0 : [1;1]
-vec > : 6, 9 - 0 : [2;2]
-vec > : 11, 2 - 0 : [3;3]
-vec > : 3, 6 - 0 : [4;4]
-vec > : 11, 2 - 0 : [5;5]
-vec > : 8, 9 - 0 : [6;6]
-vec > : 22, 6 - 0 : [7;7]
-in end: 10, 27 - [0;8]
-in end: 15, 29 - [1;9]
-in end: 27, 27 - [2;10]
-in end: 24, 28 - [3;11]
-in end: 27, 28 - [4;12]
-in end: 26, 30 - [5;13]
-in end: 16, 29 - [6;14]
-in end: 27, 28 - [7;15]
-in end: 5, 11 - [0;0]
-in end: 2, 7 - [1;1]
-in end: 6, 9 - [2;2]
-in end: 2, 11 - [3;3]
-in end: 3, 6 - [4;4]
-in end: 2, 11 - [5;5]
-in end: 8, 9 - [6;6]
-in end: 6, 22 - [7;7]
+global: up - 16, low - 24, arr[up] - 10, arr[low] - 25
+global: up - 17, low - 25, arr[up] - 13, arr[low] - 28
+global: up - 18, low - 26, arr[up] - 14, arr[low] - 27
+global: up - 19, low - 27, arr[up] - 15, arr[low] - 29
+global: up - 20, low - 28, arr[up] - 12, arr[low] - 26
+global: up - 21, low - 29, arr[up] - 16, arr[low] - 31
+global: up - 22, low - 30, arr[up] - 23, arr[low] - 30
+global: up - 23, low - 31, arr[up] - 24, arr[low] - 32
+global: up - 0, low - 8, arr[up] - 1, arr[low] - 2
+global: up - 1, low - 9, arr[up] - 5, arr[low] - 6
+global: up - 2, low - 10, arr[up] - 19, arr[low] - 4
+global: up - 3, low - 11, arr[up] - 20, arr[low] - 8
+global: up - 4, low - 12, arr[up] - 17, arr[low] - 3
+global: up - 5, low - 13, arr[up] - 18, arr[low] - 7
+global: up - 6, low - 14, arr[up] - 21, arr[low] - 9
+global: up - 7, low - 15, arr[up] - 22, arr[low] - 11
+local: l_up - 0, l_low - 8, vec[l_up] - 10, vec[l_low] - 25
+local: l_up - 1, l_low - 9, vec[l_up] - 13, vec[l_low] - 28
+local: l_up - 2, l_low - 10, vec[l_up] - 14, vec[l_low] - 27
+local: l_up - 3, l_low - 11, vec[l_up] - 15, vec[l_low] - 29
+local: l_up - 4, l_low - 12, vec[l_up] - 12, vec[l_low] - 26
+local: l_up - 5, l_low - 13, vec[l_up] - 16, vec[l_low] - 31
+local: l_up - 6, l_low - 14, vec[l_up] - 23, vec[l_low] - 30
+local: l_up - 7, l_low - 15, vec[l_up] - 24, vec[l_low] - 32
+local: l_up - 0, l_low - 8, vec[l_up] - 1, vec[l_low] - 2
+local: l_up - 1, l_low - 9, vec[l_up] - 5, vec[l_low] - 6
+local: l_up - 2, l_low - 10, vec[l_up] - 19, vec[l_low] - 4
+local: l_up - 3, l_low - 11, vec[l_up] - 20, vec[l_low] - 8
+local: l_up - 4, l_low - 12, vec[l_up] - 17, vec[l_low] - 3
+local: l_up - 5, l_low - 13, vec[l_up] - 18, vec[l_low] - 7
+local: l_up - 6, l_low - 14, vec[l_up] - 21, vec[l_low] - 9
+local: l_up - 7, l_low - 15, vec[l_up] - 22, vec[l_low] - 11
+equal : 10 > 25 - 0
+equal : 13 > 28 - 0
+equal : 14 > 27 - 0
+equal : 15 > 29 - 0
+equal : 12 > 26 - 0
+equal : 16 > 31 - 0
+equal : 23 > 30 - 0
+equal : 24 > 32 - 0
+equal : 1 > 2 - 0
+equal : 5 > 6 - 0
+equal : 19 > 4 - 0
+equal : 20 > 8 - 0
+equal : 17 > 3 - 0
+equal : 18 > 7 - 0
+equal : 21 > 9 - 0
+equal : 22 > 11 - 0
 GLOBAL RANGE IS 2, 2, 4
 LOCAL RANGE IS 1, 2, 4
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-local_pos is 6
-local_pos is 7
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-local_pos is 6
-local_pos is 7
-global id: 1, 0, 0 - 8
-global id: 1, 1, 0 - 9
-global id: 1, 0, 1 - 10
-global id: 1, 1, 1 - 11
-global id: 1, 0, 2 - 12
-global id: 1, 1, 2 - 13
-global id: 1, 0, 3 - 14
-global id: 1, 1, 3 - 15
-global id: 0, 0, 0 - 0
-global id: 0, 1, 0 - 1
-global id: 0, 0, 1 - 2
-global id: 0, 1, 1 - 3
-global id: 0, 0, 2 - 4
-global id: 0, 1, 2 - 5
-global id: 0, 0, 3 - 6
-global id: 0, 1, 3 - 7
-global size: 2, 0, 2
-global size: 2, 0, 2
-global size: 2, 0, 2
-global size: 2, 0, 2
-global size: 2, 0, 2
-global size: 2, 0, 2
-global size: 2, 0, 2
-global size: 2, 0, 2
-global size: 2, 0, 2
-global size: 2, 0, 2
-global size: 2, 0, 2
-global size: 2, 0, 2
-global size: 2, 0, 2
-global size: 2, 0, 2
-global size: 2, 0, 2
-global size: 2, 0, 2
-local size 0: local id: 0, 0, 0 [1, 0, 2]
-local size 1: local id: 0, 1, 0 [1, 0, 2]
-local size 2: local id: 0, 0, 1 [1, 0, 2]
-local size 3: local id: 0, 1, 1 [1, 0, 2]
-local size 4: local id: 0, 0, 2 [1, 0, 2]
-local size 5: local id: 0, 1, 2 [1, 0, 2]
-local size 6: local id: 0, 0, 3 [1, 0, 2]
-local size 7: local id: 0, 1, 3 [1, 0, 2]
-local size 0: local id: 0, 0, 0 [1, 0, 2]
-local size 1: local id: 0, 1, 0 [1, 0, 2]
-local size 2: local id: 0, 0, 1 [1, 0, 2]
-local size 3: local id: 0, 1, 1 [1, 0, 2]
-local size 4: local id: 0, 0, 2 [1, 0, 2]
-local size 5: local id: 0, 1, 2 [1, 0, 2]
-local size 6: local id: 0, 0, 3 [1, 0, 2]
-local size 7: local id: 0, 1, 3 [1, 0, 2]
-global: 16, 24 - [0;8]
-global: 17, 25 - [1;9]
-global: 18, 26 - [2;10]
-global: 19, 27 - [3;11]
-global: 20, 28 - [4;12]
-global: 21, 29 - [5;13]
-global: 22, 30 - [6;14]
-global: 23, 31 - [7;15]
-global: 0, 8 - [0;0]
-global: 1, 9 - [1;1]
-global: 2, 10 - [2;2]
-global: 3, 11 - [3;3]
-global: 4, 12 - [4;4]
-global: 5, 13 - [5;5]
-global: 6, 14 - [6;6]
-global: 7, 15 - [7;7]
-local: 0, 4 - [0;8]
-local: 8, 12 - [1;9]
-local: 1, 5 - [2;10]
-local: 9, 13 - [3;11]
-local: 2, 6 - [4;12]
-local: 10, 14 - [5;13]
-local: 3, 7 - [6;14]
-local: 11, 15 - [7;15]
-local: 0, 4 - [0;0]
-local: 8, 12 - [1;1]
-local: 1, 5 - [2;2]
-local: 9, 13 - [3;3]
-local: 2, 6 - [4;4]
-local: 10, 14 - [5;5]
-local: 3, 7 - [6;6]
-local: 11, 15 - [7;7]
-global up and low: 10, 27 - [0;8]
-global up and low: 15, 29 - [1;9]
-global up and low: 27, 27 - [2;10]
-global up and low: 24, 28 - [3;11]
-global up and low: 27, 28 - [4;12]
-global up and low: 26, 30 - [5;13]
-global up and low: 16, 29 - [6;14]
-global up and low: 27, 28 - [7;15]
-global up and low: 5, 11 - [0;0]
-global up and low: 2, 7 - [1;1]
-global up and low: 6, 9 - [2;2]
-global up and low: 2, 11 - [3;3]
-global up and low: 3, 6 - [4;4]
-global up and low: 2, 11 - [5;5]
-global up and low: 8, 9 - [6;6]
-global up and low: 6, 22 - [7;7]
-local up and low: 10, 27 - [0;8]
-local up and low: 27, 28 - [1;9]
-local up and low: 15, 26 - [2;10]
-local up and low: 29, 30 - [3;11]
-local up and low: 27, 16 - [4;12]
-local up and low: 27, 29 - [5;13]
-local up and low: 24, 27 - [6;14]
-local up and low: 28, 28 - [7;15]
-local up and low: 5, 3 - [0;0]
-local up and low: 11, 6 - [1;1]
-local up and low: 2, 2 - [2;2]
-local up and low: 7, 11 - [3;3]
-local up and low: 6, 8 - [4;4]
-local up and low: 9, 9 - [5;5]
-local up and low: 2, 6 - [6;6]
-local up and low: 11, 22 - [7;7]
-vec > : 10, 27 - 0 : [0;8]
-vec > : 27, 28 - 0 : [1;9]
-vec > : 15, 26 - 0 : [2;10]
-vec > : 29, 30 - 0 : [3;11]
-vec > : 27, 16 - 0 : [4;12]
-vec > : 27, 29 - 0 : [5;13]
-vec > : 24, 27 - 0 : [6;14]
-vec > : 28, 28 - 0 : [7;15]
-vec > : 5, 3 - 0 : [0;0]
-vec > : 11, 6 - 0 : [1;1]
-vec > : 2, 2 - 0 : [2;2]
-vec > : 7, 11 - 0 : [3;3]
-vec > : 6, 8 - 0 : [4;4]
-vec > : 9, 9 - 0 : [5;5]
-vec > : 2, 6 - 0 : [6;6]
-vec > : 11, 22 - 0 : [7;7]
-in end: 10, 27 - [0;8]
-in end: 27, 28 - [1;9]
-in end: 15, 26 - [2;10]
-in end: 29, 30 - [3;11]
-in end: 16, 27 - [4;12]
-in end: 27, 29 - [5;13]
-in end: 24, 27 - [6;14]
-in end: 28, 28 - [7;15]
-in end: 3, 5 - [0;0]
-in end: 6, 11 - [1;1]
-in end: 2, 2 - [2;2]
-in end: 7, 11 - [3;3]
-in end: 6, 8 - [4;4]
-in end: 9, 9 - [5;5]
-in end: 2, 6 - [6;6]
-in end: 11, 22 - [7;7]
+global: up - 16, low - 20, arr[up] - 10, arr[low] - 12
+global: up - 24, low - 28, arr[up] - 25, arr[low] - 26
+global: up - 17, low - 21, arr[up] - 13, arr[low] - 16
+global: up - 25, low - 29, arr[up] - 28, arr[low] - 31
+global: up - 18, low - 22, arr[up] - 14, arr[low] - 23
+global: up - 26, low - 30, arr[up] - 27, arr[low] - 30
+global: up - 19, low - 23, arr[up] - 15, arr[low] - 24
+global: up - 27, low - 31, arr[up] - 29, arr[low] - 32
+global: up - 0, low - 4, arr[up] - 1, arr[low] - 3
+global: up - 8, low - 12, arr[up] - 2, arr[low] - 17
+global: up - 1, low - 5, arr[up] - 5, arr[low] - 7
+global: up - 9, low - 13, arr[up] - 6, arr[low] - 18
+global: up - 2, low - 6, arr[up] - 4, arr[low] - 9
+global: up - 10, low - 14, arr[up] - 19, arr[low] - 21
+global: up - 3, low - 7, arr[up] - 8, arr[low] - 11
+global: up - 11, low - 15, arr[up] - 20, arr[low] - 22
+local: l_up - 0, l_low - 4, vec[l_up] - 10, vec[l_low] - 12
+local: l_up - 8, l_low - 12, vec[l_up] - 25, vec[l_low] - 26
+local: l_up - 1, l_low - 5, vec[l_up] - 13, vec[l_low] - 16
+local: l_up - 9, l_low - 13, vec[l_up] - 28, vec[l_low] - 31
+local: l_up - 2, l_low - 6, vec[l_up] - 14, vec[l_low] - 23
+local: l_up - 10, l_low - 14, vec[l_up] - 27, vec[l_low] - 30
+local: l_up - 3, l_low - 7, vec[l_up] - 15, vec[l_low] - 24
+local: l_up - 11, l_low - 15, vec[l_up] - 29, vec[l_low] - 32
+local: l_up - 0, l_low - 4, vec[l_up] - 1, vec[l_low] - 3
+local: l_up - 8, l_low - 12, vec[l_up] - 2, vec[l_low] - 17
+local: l_up - 1, l_low - 5, vec[l_up] - 5, vec[l_low] - 7
+local: l_up - 9, l_low - 13, vec[l_up] - 6, vec[l_low] - 18
+local: l_up - 2, l_low - 6, vec[l_up] - 4, vec[l_low] - 9
+local: l_up - 10, l_low - 14, vec[l_up] - 19, vec[l_low] - 21
+local: l_up - 3, l_low - 7, vec[l_up] - 8, vec[l_low] - 11
+local: l_up - 11, l_low - 15, vec[l_up] - 20, vec[l_low] - 22
+equal : 10 > 12 - 0
+equal : 25 > 26 - 0
+equal : 13 > 16 - 0
+equal : 28 > 31 - 0
+equal : 14 > 23 - 0
+equal : 27 > 30 - 0
+equal : 15 > 24 - 0
+equal : 29 > 32 - 0
+equal : 1 > 3 - 0
+equal : 2 > 17 - 0
+equal : 5 > 7 - 0
+equal : 6 > 18 - 0
+equal : 4 > 9 - 0
+equal : 19 > 21 - 0
+equal : 8 > 11 - 0
+equal : 20 > 22 - 0
 GLOBAL RANGE IS 2, 4, 2
 LOCAL RANGE IS 1, 4, 2
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-local_pos is 6
-local_pos is 7
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-local_pos is 6
-local_pos is 7
-global id: 1, 0, 0 - 8
-global id: 1, 1, 0 - 9
-global id: 1, 2, 0 - 10
-global id: 1, 3, 0 - 11
-global id: 1, 0, 1 - 12
-global id: 1, 1, 1 - 13
-global id: 1, 2, 1 - 14
-global id: 1, 3, 1 - 15
-global id: 0, 0, 0 - 0
-global id: 0, 1, 0 - 1
-global id: 0, 2, 0 - 2
-global id: 0, 3, 0 - 3
-global id: 0, 0, 1 - 4
-global id: 0, 1, 1 - 5
-global id: 0, 2, 1 - 6
-global id: 0, 3, 1 - 7
-global size: 2, 0, 4
-global size: 2, 0, 4
-global size: 2, 0, 4
-global size: 2, 0, 4
-global size: 2, 0, 4
-global size: 2, 0, 4
-global size: 2, 0, 4
-global size: 2, 0, 4
-global size: 2, 0, 4
-global size: 2, 0, 4
-global size: 2, 0, 4
-global size: 2, 0, 4
-global size: 2, 0, 4
-global size: 2, 0, 4
-global size: 2, 0, 4
-global size: 2, 0, 4
-local size 0: local id: 0, 0, 0 [1, 0, 4]
-local size 1: local id: 0, 1, 0 [1, 0, 4]
-local size 2: local id: 0, 2, 0 [1, 0, 4]
-local size 3: local id: 0, 3, 0 [1, 0, 4]
-local size 4: local id: 0, 0, 1 [1, 0, 4]
-local size 5: local id: 0, 1, 1 [1, 0, 4]
-local size 6: local id: 0, 2, 1 [1, 0, 4]
-local size 7: local id: 0, 3, 1 [1, 0, 4]
-local size 0: local id: 0, 0, 0 [1, 0, 4]
-local size 1: local id: 0, 1, 0 [1, 0, 4]
-local size 2: local id: 0, 2, 0 [1, 0, 4]
-local size 3: local id: 0, 3, 0 [1, 0, 4]
-local size 4: local id: 0, 0, 1 [1, 0, 4]
-local size 5: local id: 0, 1, 1 [1, 0, 4]
-local size 6: local id: 0, 2, 1 [1, 0, 4]
-local size 7: local id: 0, 3, 1 [1, 0, 4]
-global: 16, 24 - [0;8]
-global: 17, 25 - [1;9]
-global: 18, 26 - [2;10]
-global: 19, 27 - [3;11]
-global: 20, 28 - [4;12]
-global: 21, 29 - [5;13]
-global: 22, 30 - [6;14]
-global: 23, 31 - [7;15]
-global: 0, 8 - [0;0]
-global: 1, 9 - [1;1]
-global: 2, 10 - [2;2]
-global: 3, 11 - [3;3]
-global: 4, 12 - [4;4]
-global: 5, 13 - [5;5]
-global: 6, 14 - [6;6]
-global: 7, 15 - [7;7]
-local: 0, 2 - [0;8]
-local: 4, 6 - [1;9]
-local: 8, 10 - [2;10]
-local: 12, 14 - [3;11]
-local: 1, 3 - [4;12]
-local: 5, 7 - [5;13]
-local: 9, 11 - [6;14]
-local: 13, 15 - [7;15]
-local: 0, 2 - [0;0]
-local: 4, 6 - [1;1]
-local: 8, 10 - [2;2]
-local: 12, 14 - [3;3]
-local: 1, 3 - [4;4]
-local: 5, 7 - [5;5]
-local: 9, 11 - [6;6]
-local: 13, 15 - [7;7]
-global up and low: 10, 27 - [0;8]
-global up and low: 27, 28 - [1;9]
-global up and low: 15, 26 - [2;10]
-global up and low: 29, 30 - [3;11]
-global up and low: 16, 27 - [4;12]
-global up and low: 27, 29 - [5;13]
-global up and low: 24, 27 - [6;14]
-global up and low: 28, 28 - [7;15]
-global up and low: 3, 5 - [0;0]
-global up and low: 6, 11 - [1;1]
-global up and low: 2, 2 - [2;2]
-global up and low: 7, 11 - [3;3]
-global up and low: 6, 8 - [4;4]
-global up and low: 9, 9 - [5;5]
-global up and low: 2, 6 - [6;6]
-global up and low: 11, 22 - [7;7]
-local up and low: 10, 15 - [0;8]
-local up and low: 16, 24 - [1;9]
-local up and low: 27, 26 - [2;10]
-local up and low: 27, 27 - [3;11]
-local up and low: 27, 29 - [4;12]
-local up and low: 27, 28 - [5;13]
-local up and low: 28, 30 - [6;14]
-local up and low: 29, 28 - [7;15]
-local up and low: 3, 2 - [0;0]
-local up and low: 6, 2 - [1;1]
-local up and low: 5, 2 - [2;2]
-local up and low: 8, 6 - [3;3]
-local up and low: 6, 7 - [4;4]
-local up and low: 9, 11 - [5;5]
-local up and low: 11, 11 - [6;6]
-local up and low: 9, 22 - [7;7]
-vec > : 10, 15 - 0 : [0;8]
-vec > : 16, 24 - 0 : [1;9]
-vec > : 27, 26 - 0 : [2;10]
-vec > : 27, 27 - 0 : [3;11]
-vec > : 27, 29 - 0 : [4;12]
-vec > : 27, 28 - 0 : [5;13]
-vec > : 28, 30 - 0 : [6;14]
-vec > : 29, 28 - 0 : [7;15]
-vec > : 3, 2 - 0 : [0;0]
-vec > : 6, 2 - 0 : [1;1]
-vec > : 5, 2 - 0 : [2;2]
-vec > : 8, 6 - 0 : [3;3]
-vec > : 6, 7 - 0 : [4;4]
-vec > : 9, 11 - 0 : [5;5]
-vec > : 11, 11 - 0 : [6;6]
-vec > : 9, 22 - 0 : [7;7]
-in end: 10, 15 - [0;8]
-in end: 16, 24 - [1;9]
-in end: 26, 27 - [2;10]
-in end: 27, 27 - [3;11]
-in end: 27, 29 - [4;12]
-in end: 27, 28 - [5;13]
-in end: 28, 30 - [6;14]
-in end: 28, 29 - [7;15]
-in end: 2, 3 - [0;0]
-in end: 2, 6 - [1;1]
-in end: 2, 5 - [2;2]
-in end: 6, 8 - [3;3]
-in end: 6, 7 - [4;4]
-in end: 9, 11 - [5;5]
-in end: 11, 11 - [6;6]
-in end: 9, 22 - [7;7]
+global: up - 16, low - 18, arr[up] - 10, arr[low] - 14
+global: up - 20, low - 22, arr[up] - 12, arr[low] - 23
+global: up - 24, low - 26, arr[up] - 25, arr[low] - 27
+global: up - 28, low - 30, arr[up] - 26, arr[low] - 30
+global: up - 17, low - 19, arr[up] - 13, arr[low] - 15
+global: up - 21, low - 23, arr[up] - 16, arr[low] - 24
+global: up - 25, low - 27, arr[up] - 28, arr[low] - 29
+global: up - 29, low - 31, arr[up] - 31, arr[low] - 32
+global: up - 0, low - 2, arr[up] - 1, arr[low] - 4
+global: up - 4, low - 6, arr[up] - 3, arr[low] - 9
+global: up - 8, low - 10, arr[up] - 2, arr[low] - 19
+global: up - 12, low - 14, arr[up] - 17, arr[low] - 21
+global: up - 1, low - 3, arr[up] - 5, arr[low] - 8
+global: up - 5, low - 7, arr[up] - 7, arr[low] - 11
+global: up - 9, low - 11, arr[up] - 6, arr[low] - 20
+global: up - 13, low - 15, arr[up] - 18, arr[low] - 22
+local: l_up - 0, l_low - 2, vec[l_up] - 10, vec[l_low] - 14
+local: l_up - 4, l_low - 6, vec[l_up] - 12, vec[l_low] - 23
+local: l_up - 8, l_low - 10, vec[l_up] - 25, vec[l_low] - 27
+local: l_up - 12, l_low - 14, vec[l_up] - 26, vec[l_low] - 30
+local: l_up - 1, l_low - 3, vec[l_up] - 13, vec[l_low] - 15
+local: l_up - 5, l_low - 7, vec[l_up] - 16, vec[l_low] - 24
+local: l_up - 9, l_low - 11, vec[l_up] - 28, vec[l_low] - 29
+local: l_up - 13, l_low - 15, vec[l_up] - 31, vec[l_low] - 32
+local: l_up - 0, l_low - 2, vec[l_up] - 1, vec[l_low] - 4
+local: l_up - 4, l_low - 6, vec[l_up] - 3, vec[l_low] - 9
+local: l_up - 8, l_low - 10, vec[l_up] - 2, vec[l_low] - 19
+local: l_up - 12, l_low - 14, vec[l_up] - 17, vec[l_low] - 21
+local: l_up - 1, l_low - 3, vec[l_up] - 5, vec[l_low] - 8
+local: l_up - 5, l_low - 7, vec[l_up] - 7, vec[l_low] - 11
+local: l_up - 9, l_low - 11, vec[l_up] - 6, vec[l_low] - 20
+local: l_up - 13, l_low - 15, vec[l_up] - 18, vec[l_low] - 22
+equal : 10 > 14 - 0
+equal : 12 > 23 - 0
+equal : 25 > 27 - 0
+equal : 26 > 30 - 0
+equal : 13 > 15 - 0
+equal : 16 > 24 - 0
+equal : 28 > 29 - 0
+equal : 31 > 32 - 0
+equal : 1 > 4 - 0
+equal : 3 > 9 - 0
+equal : 2 > 19 - 0
+equal : 17 > 21 - 0
+equal : 5 > 8 - 0
+equal : 7 > 11 - 0
+equal : 6 > 20 - 0
+equal : 18 > 22 - 0
 GLOBAL RANGE IS 2, 8, 1
 LOCAL RANGE IS 1, 8, 1
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-local_pos is 6
-local_pos is 7
-local_pos is 0
-local_pos is 1
-local_pos is 2
-local_pos is 3
-local_pos is 4
-local_pos is 5
-local_pos is 6
-local_pos is 7
-global id: 1, 0, 0 - 8
-global id: 1, 1, 0 - 9
-global id: 1, 2, 0 - 10
-global id: 1, 3, 0 - 11
-global id: 1, 4, 0 - 12
-global id: 1, 5, 0 - 13
-global id: 1, 6, 0 - 14
-global id: 1, 7, 0 - 15
-global id: 0, 0, 0 - 0
-global id: 0, 1, 0 - 1
-global id: 0, 2, 0 - 2
-global id: 0, 3, 0 - 3
-global id: 0, 4, 0 - 4
-global id: 0, 5, 0 - 5
-global id: 0, 6, 0 - 6
-global id: 0, 7, 0 - 7
-global size: 2, 0, 8
-global size: 2, 0, 8
-global size: 2, 0, 8
-global size: 2, 0, 8
-global size: 2, 0, 8
-global size: 2, 0, 8
-global size: 2, 0, 8
-global size: 2, 0, 8
-global size: 2, 0, 8
-global size: 2, 0, 8
-global size: 2, 0, 8
-global size: 2, 0, 8
-global size: 2, 0, 8
-global size: 2, 0, 8
-global size: 2, 0, 8
-global size: 2, 0, 8
-local size 0: local id: 0, 0, 0 [1, 0, 8]
-local size 1: local id: 0, 1, 0 [1, 0, 8]
-local size 2: local id: 0, 2, 0 [1, 0, 8]
-local size 3: local id: 0, 3, 0 [1, 0, 8]
-local size 4: local id: 0, 4, 0 [1, 0, 8]
-local size 5: local id: 0, 5, 0 [1, 0, 8]
-local size 6: local id: 0, 6, 0 [1, 0, 8]
-local size 7: local id: 0, 7, 0 [1, 0, 8]
-local size 0: local id: 0, 0, 0 [1, 0, 8]
-local size 1: local id: 0, 1, 0 [1, 0, 8]
-local size 2: local id: 0, 2, 0 [1, 0, 8]
-local size 3: local id: 0, 3, 0 [1, 0, 8]
-local size 4: local id: 0, 4, 0 [1, 0, 8]
-local size 5: local id: 0, 5, 0 [1, 0, 8]
-local size 6: local id: 0, 6, 0 [1, 0, 8]
-local size 7: local id: 0, 7, 0 [1, 0, 8]
-global: 16, 24 - [0;8]
-global: 17, 25 - [1;9]
-global: 18, 26 - [2;10]
-global: 19, 27 - [3;11]
-global: 20, 28 - [4;12]
-global: 21, 29 - [5;13]
-global: 22, 30 - [6;14]
-global: 23, 31 - [7;15]
-global: 0, 8 - [0;0]
-global: 1, 9 - [1;1]
-global: 2, 10 - [2;2]
-global: 3, 11 - [3;3]
-global: 4, 12 - [4;4]
-global: 5, 13 - [5;5]
-global: 6, 14 - [6;6]
-global: 7, 15 - [7;7]
-local: 0, 1 - [0;8]
-local: 2, 3 - [1;9]
-local: 4, 5 - [2;10]
-local: 6, 7 - [3;11]
-local: 8, 9 - [4;12]
-local: 10, 11 - [5;13]
-local: 12, 13 - [6;14]
-local: 14, 15 - [7;15]
-local: 0, 1 - [0;0]
-local: 2, 3 - [1;1]
-local: 4, 5 - [2;2]
-local: 6, 7 - [3;3]
-local: 8, 9 - [4;4]
-local: 10, 11 - [5;5]
-local: 12, 13 - [6;6]
-local: 14, 15 - [7;7]
-global up and low: 10, 15 - [0;8]
-global up and low: 16, 24 - [1;9]
-global up and low: 26, 27 - [2;10]
-global up and low: 27, 27 - [3;11]
-global up and low: 27, 29 - [4;12]
-global up and low: 27, 28 - [5;13]
-global up and low: 28, 30 - [6;14]
-global up and low: 28, 29 - [7;15]
-global up and low: 2, 3 - [0;0]
-global up and low: 2, 6 - [1;1]
-global up and low: 2, 5 - [2;2]
-global up and low: 6, 8 - [3;3]
-global up and low: 6, 7 - [4;4]
-global up and low: 9, 11 - [5;5]
-global up and low: 11, 11 - [6;6]
-global up and low: 9, 22 - [7;7]
-local up and low: 10, 16 - [0;8]
-local up and low: 26, 27 - [1;9]
-local up and low: 27, 27 - [2;10]
-local up and low: 28, 28 - [3;11]
-local up and low: 15, 24 - [4;12]
-local up and low: 27, 27 - [5;13]
-local up and low: 29, 28 - [6;14]
-local up and low: 30, 29 - [7;15]
-local up and low: 2, 2 - [0;0]
-local up and low: 2, 6 - [1;1]
-local up and low: 6, 9 - [2;2]
-local up and low: 11, 9 - [3;3]
-local up and low: 3, 6 - [4;4]
-local up and low: 5, 8 - [5;5]
-local up and low: 7, 11 - [6;6]
-local up and low: 11, 22 - [7;7]
-vec > : 10, 16 - 0 : [0;8]
-vec > : 26, 27 - 0 : [1;9]
-vec > : 27, 27 - 0 : [2;10]
-vec > : 28, 28 - 0 : [3;11]
-vec > : 15, 24 - 0 : [4;12]
-vec > : 27, 27 - 0 : [5;13]
-vec > : 29, 28 - 0 : [6;14]
-vec > : 30, 29 - 0 : [7;15]
-vec > : 2, 2 - 0 : [0;0]
-vec > : 2, 6 - 0 : [1;1]
-vec > : 6, 9 - 0 : [2;2]
-vec > : 11, 9 - 0 : [3;3]
-vec > : 3, 6 - 0 : [4;4]
-vec > : 5, 8 - 0 : [5;5]
-vec > : 7, 11 - 0 : [6;6]
-vec > : 11, 22 - 0 : [7;7]
-in end: 10, 16 - [0;8]
-in end: 26, 27 - [1;9]
-in end: 27, 27 - [2;10]
-in end: 28, 28 - [3;11]
-in end: 15, 24 - [4;12]
-in end: 27, 27 - [5;13]
-in end: 28, 29 - [6;14]
-in end: 29, 30 - [7;15]
-in end: 2, 2 - [0;0]
-in end: 2, 6 - [1;1]
-in end: 6, 9 - [2;2]
-in end: 9, 11 - [3;3]
-in end: 3, 6 - [4;4]
-in end: 5, 8 - [5;5]
-in end: 7, 11 - [6;6]
-in end: 11, 22 - [7;7]
-GPU wall time measured: 119 ms
-2 2 6 9 3 5 7 11 2 6 9 11 6 8 11 22 10 26 27 28 15 27 28 29 16 27 27 28 24 27 29 30 
+global: up - 16, low - 17, arr[up] - 10, arr[low] - 13
+global: up - 18, low - 19, arr[up] - 14, arr[low] - 15
+global: up - 20, low - 21, arr[up] - 12, arr[low] - 16
+global: up - 22, low - 23, arr[up] - 23, arr[low] - 24
+global: up - 24, low - 25, arr[up] - 25, arr[low] - 28
+global: up - 26, low - 27, arr[up] - 27, arr[low] - 29
+global: up - 28, low - 29, arr[up] - 26, arr[low] - 31
+global: up - 30, low - 31, arr[up] - 30, arr[low] - 32
+global: up - 0, low - 1, arr[up] - 1, arr[low] - 5
+global: up - 2, low - 3, arr[up] - 4, arr[low] - 8
+global: up - 4, low - 5, arr[up] - 3, arr[low] - 7
+global: up - 6, low - 7, arr[up] - 9, arr[low] - 11
+global: up - 8, low - 9, arr[up] - 2, arr[low] - 6
+global: up - 10, low - 11, arr[up] - 19, arr[low] - 20
+global: up - 12, low - 13, arr[up] - 17, arr[low] - 18
+global: up - 14, low - 15, arr[up] - 21, arr[low] - 22
+local: l_up - 0, l_low - 1, vec[l_up] - 10, vec[l_low] - 13
+local: l_up - 2, l_low - 3, vec[l_up] - 14, vec[l_low] - 15
+local: l_up - 4, l_low - 5, vec[l_up] - 12, vec[l_low] - 16
+local: l_up - 6, l_low - 7, vec[l_up] - 23, vec[l_low] - 24
+local: l_up - 8, l_low - 9, vec[l_up] - 25, vec[l_low] - 28
+local: l_up - 10, l_low - 11, vec[l_up] - 27, vec[l_low] - 29
+local: l_up - 12, l_low - 13, vec[l_up] - 26, vec[l_low] - 31
+local: l_up - 14, l_low - 15, vec[l_up] - 30, vec[l_low] - 32
+local: l_up - 0, l_low - 1, vec[l_up] - 1, vec[l_low] - 5
+local: l_up - 2, l_low - 3, vec[l_up] - 4, vec[l_low] - 8
+local: l_up - 4, l_low - 5, vec[l_up] - 3, vec[l_low] - 7
+local: l_up - 6, l_low - 7, vec[l_up] - 9, vec[l_low] - 11
+local: l_up - 8, l_low - 9, vec[l_up] - 2, vec[l_low] - 6
+local: l_up - 10, l_low - 11, vec[l_up] - 19, vec[l_low] - 20
+local: l_up - 12, l_low - 13, vec[l_up] - 17, vec[l_low] - 18
+local: l_up - 14, l_low - 15, vec[l_up] - 21, vec[l_low] - 22
+equal : 10 > 13 - 0
+equal : 14 > 15 - 0
+equal : 12 > 16 - 0
+equal : 23 > 24 - 0
+equal : 25 > 28 - 0
+equal : 27 > 29 - 0
+equal : 26 > 31 - 0
+equal : 30 > 32 - 0
+equal : 1 > 5 - 0
+equal : 4 > 8 - 0
+equal : 3 > 7 - 0
+equal : 9 > 11 - 0
+equal : 2 > 6 - 0
+equal : 19 > 20 - 0
+equal : 17 > 18 - 0
+equal : 21 > 22 - 0
+simple equal : 7 > 16 - 0
+simple equal : 11 > 24 - 0
+simple equal : 18 > 31 - 0
+simple equal : 22 > 32 - 0
+simple equal : 5 > 13 - 0
+simple equal : 6 > 28 - 0
+simple equal : 20 > 29 - 0
+simple equal : 8 > 15 - 0
+simple equal : 3 > 12 - 0
+simple equal : 9 > 23 - 0
+simple equal : 17 > 26 - 0
+simple equal : 21 > 30 - 0
+simple equal : 1 > 10 - 0
+simple equal : 2 > 25 - 0
+simple equal : 19 > 27 - 0
+simple equal : 4 > 14 - 0
+
+simple equal : 15 > 29 - 0
+simple equal : 14 > 27 - 0
+simple equal : 24 > 32 - 0
+simple equal : 23 > 30 - 0
+simple equal : 16 > 31 - 0
+simple equal : 13 > 28 - 0
+simple equal : 10 > 25 - 0
+simple equal : 12 > 26 - 0
+simple equal : 4 > 19 - 0
+simple equal : 8 > 20 - 0
+simple equal : 9 > 21 - 0
+simple equal : 11 > 22 - 0
+simple equal : 7 > 18 - 0
+simple equal : 5 > 6 - 0
+simple equal : 1 > 2 - 0
+simple equal : 3 > 17 - 0
+
+simple equal : 28 > 31 - 0
+simple equal : 20 > 22 - 0
+simple equal : 29 > 32 - 0
+simple equal : 6 > 18 - 0
+simple equal : 27 > 30 - 0
+simple equal : 2 > 17 - 0
+simple equal : 19 > 21 - 0
+simple equal : 25 > 26 - 0
+simple equal : 5 > 7 - 0
+simple equal : 13 > 16 - 0
+simple equal : 8 > 11 - 0
+simple equal : 15 > 24 - 0
+simple equal : 4 > 9 - 0
+simple equal : 14 > 23 - 0
+simple equal : 1 > 3 - 0
+simple equal : 10 > 12 - 0
+
+simple equal : 31 > 32 - 0
+simple equal : 26 > 30 - 0
+simple equal : 16 > 24 - 0
+simple equal : 12 > 23 - 0
+simple equal : 18 > 22 - 0
+simple equal : 17 > 21 - 0
+simple equal : 3 > 9 - 0
+simple equal : 7 > 11 - 0
+simple equal : 10 > 14 - 0
+simple equal : 25 > 27 - 0
+simple equal : 13 > 15 - 0
+simple equal : 28 > 29 - 0
+simple equal : 1 > 4 - 0
+simple equal : 6 > 20 - 0
+simple equal : 5 > 8 - 0
+simple equal : 2 > 19 - 0
+
+simple equal : 21 > 22 - 0
+simple equal : 27 > 29 - 0
+simple equal : 30 > 32 - 0
+simple equal : 19 > 20 - 0
+simple equal : 23 > 24 - 0
+simple equal : 4 > 8 - 0
+simple equal : 14 > 15 - 0
+simple equal : 9 > 11 - 0
+simple equal : 17 > 18 - 0
+simple equal : 25 > 28 - 0
+simple equal : 2 > 6 - 0
+simple equal : 26 > 31 - 0
+simple equal : 12 > 16 - 0
+simple equal : 1 > 5 - 0
+simple equal : 10 > 13 - 0
+simple equal : 3 > 7 - 0
+
+GPU wall time measured: 138 ms
+1 5 4 8 3 7 9 11 2 6 19 20 17 18 21 22 10 13 14 15 12 16 23 24 25 28 27 29 26 31 30 32 
 CPU time measured: 0 ms

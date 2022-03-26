@@ -153,6 +153,7 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
                 cl::EnqueueArgs args(queue_, global_range, local_range);
 
                 event = bitonic_simple(args, sequence, biton_size, bucket_size);
+                printf("\n");
             }
             event.wait();
 
