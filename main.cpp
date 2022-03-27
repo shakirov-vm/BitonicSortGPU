@@ -31,10 +31,10 @@
   } else                                                                       \
     std::cout
 
-//constexpr size_t ARR_SIZE = 4194304;
-constexpr size_t ARR_SIZE = 32;
+constexpr size_t ARR_SIZE = 4194304;
+//constexpr size_t ARR_SIZE = 32;
 constexpr size_t LOCAL_SIZE = 1;
-#define WORK_GROUP_SIZE 8
+#define WORK_GROUP_SIZE 64
 
 //long GDurAll = 0;
 
@@ -132,6 +132,9 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
     /*event = before256_simple(args, sequence);
     event.wait();*/
 
+
+    std::chrono::high_resolution_clock::time_point TimeStart = std::chrono::high_resolution_clock::now();
+
     for (int biton_size = 2; biton_size < ARR_SIZE + 1; biton_size *= 2) {
 
         for (int bucket_size = biton_size; bucket_size > 1; bucket_size /= 2) {
@@ -140,8 +143,6 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
             
             if (biton_size < WORK_GROUP_SIZE * 2 + 1) {                
                 
-                printf("GLOBAL RANGE IS %ld, %d, %d\n", ARR_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
-                printf("LOCAL RANGE IS %d, %d, %d\n", 2 * WORK_GROUP_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
                 cl::NDRange local_range(2 * WORK_GROUP_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
                 cl::EnqueueArgs args(queue_, global_range, local_range);
             
@@ -153,7 +154,6 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
                 cl::EnqueueArgs args(queue_, global_range, local_range);
 
                 event = bitonic_simple(args, sequence, biton_size, bucket_size);
-                printf("\n");
             }
             event.wait();
 
@@ -163,6 +163,12 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
             //GDurAll += (GPUTimeFin - GPUTimeStart) / 1000000; // ns -> ms
         }
     }
+
+    std::chrono::high_resolution_clock::time_point TimeFin = std::chrono::high_resolution_clock::now();
+
+    long Dur = std::chrono::duration_cast<std::chrono::milliseconds>(TimeFin - TimeStart).count();
+
+    std::cout << "GPU events time measured: " << Dur << " ms" << std::endl;
 
     cl::copy(queue_, sequence, sequence_ptr, sequence_ptr + sequence_size);
     return event;
