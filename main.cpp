@@ -31,10 +31,10 @@
   } else                                                                       \
     std::cout
 
-constexpr size_t ARR_SIZE = 4194304;
-//constexpr size_t ARR_SIZE = 32;
+//constexpr size_t ARR_SIZE = 4194304;
+constexpr size_t ARR_SIZE = 32;
 constexpr size_t LOCAL_SIZE = 1;
-#define WORK_GROUP_SIZE 64
+#define WORK_GROUP_SIZE 8
 
 //long GDurAll = 0;
 
@@ -118,10 +118,7 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
     
     bitonic_t bitonic_simple(program, "bitonic_simple");  
     bitonic_t bitonic_hard(program, "bitonic_hard"); 
-
-    /*kernel_code_ = std::string(read_file("./before256.cl"));
-    cl::Program program_1(context_, kernel_code_, true);
-    before256_t before256_simple(program_1, "before256");*/
+    bitonic_t big_bucket(program, "big_bucket"); 
 
     cl::Event event;
     //cl_ulong GPUTimeStart, GPUTimeFin;
@@ -135,21 +132,29 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
 
     std::chrono::high_resolution_clock::time_point TimeStart = std::chrono::high_resolution_clock::now();
 
-    for (int biton_size = 2; biton_size < ARR_SIZE + 1; biton_size *= 2) {
+    for (int biton_size = 2; biton_size <= ARR_SIZE; biton_size *= 2) {
 
-        for (int bucket_size = biton_size; bucket_size > 1; bucket_size /= 2) {
+        for (int bucket_size = biton_size; bucket_size >= 2; bucket_size /= 2) {
 
             cl::NDRange global_range(ARR_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
-            
-            if (biton_size < WORK_GROUP_SIZE * 2 + 1) {                
                 
+            if (bucket_size >= WORK_GROUP_SIZE * 2) {
+                printf("Once - %d, %d\n", bucket_size, WORK_GROUP_SIZE);
+                cl::NDRange local_range(1, 1, WORK_GROUP_SIZE);
+                cl::EnqueueArgs args(queue_, global_range, local_range);
+            
+                event = big_bucket(args, sequence, biton_size, bucket_size);
+                printf("End\n");
+            }
+            else if (biton_size <= WORK_GROUP_SIZE * 2) {                
+                printf("Twice\n");
                 cl::NDRange local_range(2 * WORK_GROUP_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
                 cl::EnqueueArgs args(queue_, global_range, local_range);
             
                 event = bitonic_hard(args, sequence, biton_size, bucket_size);
             }
             else {
-
+                printf("Ouch\n");
                 cl::NDRange local_range(1, 1, 1);
                 cl::EnqueueArgs args(queue_, global_range, local_range);
 
