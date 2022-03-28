@@ -1,5 +1,5 @@
 
-#define WORK_GROUP_SIZE 8
+#define WORK_GROUP_SIZE 64
 
 __kernel void bitonic_simple(__global int *arr, const int biton_size, const int bucket_size) {
 
@@ -7,10 +7,10 @@ __kernel void bitonic_simple(__global int *arr, const int biton_size, const int 
 	int j = get_global_id(1);
 	int k = get_global_id(2);
 
-	if ((i % 2) == 0) {
+	int up = i * biton_size + bucket_size * j + k;
+	int low = i * biton_size + bucket_size * j + k + bucket_size / 2;
 
-		int up = i * biton_size + bucket_size * j + k;
-		int low = i * biton_size + bucket_size * j + k + bucket_size / 2;
+	if ((i % 2) == 0) {
 
 		if (arr[up] > arr[low]) {
 
@@ -20,9 +20,6 @@ __kernel void bitonic_simple(__global int *arr, const int biton_size, const int 
 		}
     } 
     else {
-
-        int up = i * biton_size + bucket_size * j + k;
-        int low = i * biton_size + bucket_size * j + k + bucket_size / 2;
 
         if (arr[up] < arr[low]) {
 
@@ -116,7 +113,7 @@ __kernel void bitonic_hard(__global int *arr, const int biton_size, const int bu
 }
 
 __kernel void big_bucket(__global int *arr, const int biton_size, const int bucket_size) {
-
+	//printf("Big bucket\n");
 
 	int i = get_global_id(0);
 	int j = get_global_id(1);
@@ -132,25 +129,30 @@ __kernel void big_bucket(__global int *arr, const int biton_size, const int buck
 	int global_pos = get_global_id(0) * get_global_size(1) * get_global_size(2) + get_global_id(1) * get_global_size(2) + get_global_id(2);
 	//int global_pos = get_global_linear_id();
 	int local_pos = get_local_linear_id();
+									// And it's divide!
+	int gr = (global_pos - local_pos) / WORK_GROUP_SIZE; // Is this enough?
 
-	//int gr = get_group_id(0); // Is this enough?
+	//printf("group num is %d, %d [%d;%d], bucket_size - %d\n", gr, global_pos - local_pos, local_pos, global_pos, bucket_size);
 
-	//int up = 2 * WORK_GROUP_SIZE * gr + local_pos;
-	//int low = 2 * WORK_GROUP_SIZE * gr + local_pos + bucket_size / 2;
+	//int up = WORK_GROUP_SIZE * gr + local_pos;
+	//int low = WORK_GROUP_SIZE * gr + local_pos + bucket_size / 2;
+
+    int up = i * biton_size + bucket_size * j + k;
+    int low = i * biton_size + bucket_size * j + k + bucket_size / 2;
 
 	//get_local_id(2) * get_local_size(1) * get_local_size(0)) + (get_local_id(1) * get_local_size(0)) + get_local_id(0)
 
-	int up = global_pos;
-	int low = global_pos + WORK_GROUP_SIZE;
+	//int up = global_pos;
+	//int low = global_pos + WORK_GROUP_SIZE;
 
 	int local_up = local_pos;
 	int local_low = local_pos + WORK_GROUP_SIZE;
 
-	printf("global: %d, %d - [%d;%d]\n", up, low, local_pos, global_pos);
-	printf("local: %d, %d - [%d;%d]\n", local_up, local_low, local_pos, global_pos);
+	//printf("global: %d, %d - [%d;%d]\n", up, low, local_pos, global_pos);
+	//printf("local: %d, %d - [%d;%d]\n", local_up, local_low, local_pos, global_pos);
 
-	printf("global up and low: %d, %d - [%d;%d]\n", arr[up], arr[low], local_pos, global_pos);
-	printf("local up and low: %d, %d - [%d;%d]\n", vec[local_up], vec[local_low], local_pos, global_pos);
+	//printf("global up and low: %d, %d - [%d;%d]\n", arr[up], arr[low], local_pos, global_pos);
+	//printf("local up and low: %d, %d - [%d;%d]\n", vec[local_up], vec[local_low], local_pos, global_pos);
 
 	vec[local_up] = arr[up];
 	vec[local_low] = arr[low];
