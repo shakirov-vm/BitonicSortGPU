@@ -146,7 +146,13 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
                 event = big_bucket(args, sequence, biton_size, bucket_size);
                 //printf("End\n");
             }
-            else if (biton_size <= WORK_GROUP_SIZE * 2) {                
+            else { // !
+                cl::NDRange local_range(1, 1, bucket_size / 2);
+                cl::EnqueueArgs args(queue_, global_range, local_range);
+            
+                event = big_bucket(args, sequence, biton_size, bucket_size);
+            }
+            /*else if (biton_size <= WORK_GROUP_SIZE * 2) {                
                 //printf("Twice\n");
                 cl::NDRange local_range(2 * WORK_GROUP_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
                 cl::EnqueueArgs args(queue_, global_range, local_range);
@@ -160,7 +166,7 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
 
                 event = bitonic_simple(args, sequence, biton_size, bucket_size);
             }
-            event.wait();
+            event.wait();*/
 
             /*cl::copy(queue_, sequence, sequence_ptr, sequence_ptr + sequence_size);
             for (int i = 0; i < ARR_SIZE; i++) {

@@ -126,11 +126,11 @@ __kernel void big_bucket(__global int *arr, const int biton_size, const int buck
 	__local int vec[WORK_GROUP_SIZE * 2];
 
 	// NO
-	int global_pos = get_global_id(0) * get_global_size(1) * get_global_size(2) + get_global_id(1) * get_global_size(2) + get_global_id(2);
+	//int global_pos = get_global_id(0) * get_global_size(1) * get_global_size(2) + get_global_id(1) * get_global_size(2) + get_global_id(2);
 	//int global_pos = get_global_linear_id();
 	int local_pos = get_local_linear_id();
 									// And it's divide!
-	int gr = (global_pos - local_pos) / WORK_GROUP_SIZE; // Is this enough?
+	//int gr = (global_pos - local_pos) / WORK_GROUP_SIZE; // Is this enough?
 
 	//printf("group num is %d, %d [%d;%d], bucket_size - %d\n", gr, global_pos - local_pos, local_pos, global_pos, bucket_size);
 
