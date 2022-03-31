@@ -10,7 +10,7 @@
 #include <system_error>
 #include <vector>
 
-// Compile : g++ main.cpp -lOpenCL -DFROM_FILE -DPRINT_SORT
+// Compile : g++ main.cpp -lOpenCL -DFROM_FILE -DPRINT_SORT -O2
 
 #ifndef CL_HPP_TARGET_OPENCL_VERSION
 #define CL_HPP_MINIMUM_OPENCL_VERSION 120
@@ -31,9 +31,9 @@
   } else                                                                       \
     std::cout
 
-constexpr size_t ARR_SIZE = 4194304;
-//constexpr size_t ARR_SIZE = 32;
-constexpr size_t LOCAL_SIZE = 1;
+//constexpr size_t ARR_SIZE = 4194304;
+constexpr size_t ARR_SIZE = 33554432;
+//constexpr size_t ARR_SIZE = 64;
 #define WORK_GROUP_SIZE 64
 
 //long GDurAll = 0;
@@ -118,6 +118,7 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
     
     bitonic_t bitonic_simple(program, "bitonic_simple");  
     bitonic_t bitonic_hard(program, "bitonic_hard"); 
+    bitonic_t bitonic_hard_1(program, "bitonic_hard_1"); 
     bitonic_t big_bucket(program, "big_bucket"); 
 
     cl::Event event;
@@ -146,19 +147,30 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
                 event = big_bucket(args, sequence, biton_size, bucket_size);
                 //printf("End\n");
             }
-            else { // !
-                cl::NDRange local_range(1, 1, bucket_size / 2);
+            else if (biton_size > WORK_GROUP_SIZE * 2) {
+
+                cl::NDRange local_range(1 , 2 * WORK_GROUP_SIZE / bucket_size, bucket_size / 2);
                 cl::EnqueueArgs args(queue_, global_range, local_range);
             
-                event = big_bucket(args, sequence, biton_size, bucket_size);
+                event = bitonic_hard_1(args, sequence, biton_size, bucket_size);
             }
-            /*else if (biton_size <= WORK_GROUP_SIZE * 2) {                
+            else if (biton_size <= WORK_GROUP_SIZE * 2) {                
                 //printf("Twice\n");
                 cl::NDRange local_range(2 * WORK_GROUP_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
                 cl::EnqueueArgs args(queue_, global_range, local_range);
             
                 event = bitonic_hard(args, sequence, biton_size, bucket_size);
             }
+            /*else { // !
+                
+                cl::NDRange local_range(1, 1, bucket_size / 2);
+                cl::EnqueueArgs args(queue_, global_range, local_range);
+            
+                event = big_bucket(args, sequence, biton_size, bucket_size);
+                
+            }*/
+            event.wait(); //Is that need?
+            /*
             else {
                 //printf("Ouch\n");
                 cl::NDRange local_range(1, 1, 1);
