@@ -31,8 +31,10 @@
   } else                                                                       \
     std::cout
 
-//constexpr size_t ARR_SIZE = 4194304;
-constexpr size_t ARR_SIZE = 33554432;
+
+//constexpr size_t   ARR_SIZE = 4000000;
+constexpr size_t ARR_SIZE = 4194304;
+//constexpr size_t ARR_SIZE = 268435456;
 //constexpr size_t ARR_SIZE = 64;
 #define WORK_GROUP_SIZE 64
 
@@ -110,26 +112,26 @@ cl::Context OclApp::get_gpu_context(cl_platform_id PId) {
 
 cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
 
+    /*size_t new_sequence_size = sequence_size;
+
+    if ((sequence_size & (sequence_size - 1)) != 0) {
+
+        for (int i = 1; i < 64; i <<= 1) new_sequence_size |= (new_sequence_size >> i);
+        new_sequence_size++;
+        printf("New is %ld\n", new_sequence_size);
+    }*/
+
     cl::Buffer sequence(context_, CL_MEM_READ_WRITE, sequence_size * sizeof(cl_int));
 
     cl::copy(queue_, sequence_ptr, sequence_ptr + sequence_size, sequence);
 
     cl::Program program(context_, kernel_code_, true);
     
-    bitonic_t bitonic_simple(program, "bitonic_simple");  
-    bitonic_t bitonic_hard(program, "bitonic_hard"); 
-    bitonic_t bitonic_hard_1(program, "bitonic_hard_1"); 
+    bitonic_t small_biton(program, "small_biton"); 
+    bitonic_t big_biton(program, "big_biton"); 
     bitonic_t big_bucket(program, "big_bucket"); 
 
     cl::Event event;
-    //cl_ulong GPUTimeStart, GPUTimeFin;
-
-    //cl::NDRange global_range(512);
-    //cl::EnqueueArgs args(queue_, global_range, local_range);
-
-    /*event = before256_simple(args, sequence);
-    event.wait();*/
-
 
     std::chrono::high_resolution_clock::time_point TimeStart = std::chrono::high_resolution_clock::now();
 
@@ -140,55 +142,27 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
             cl::NDRange global_range(ARR_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
                 
             if (bucket_size >= WORK_GROUP_SIZE * 2) {
-                //printf("Once - %d, %d\n", bucket_size, WORK_GROUP_SIZE);
+
                 cl::NDRange local_range(1, 1, WORK_GROUP_SIZE);
                 cl::EnqueueArgs args(queue_, global_range, local_range);
             
                 event = big_bucket(args, sequence, biton_size, bucket_size);
-                //printf("End\n");
             }
             else if (biton_size > WORK_GROUP_SIZE * 2) {
 
                 cl::NDRange local_range(1 , 2 * WORK_GROUP_SIZE / bucket_size, bucket_size / 2);
                 cl::EnqueueArgs args(queue_, global_range, local_range);
             
-                event = bitonic_hard_1(args, sequence, biton_size, bucket_size);
+                event = big_biton(args, sequence, biton_size, bucket_size);
             }
-            else if (biton_size <= WORK_GROUP_SIZE * 2) {                
-                //printf("Twice\n");
+            else if (biton_size <= WORK_GROUP_SIZE * 2) {              
+
                 cl::NDRange local_range(2 * WORK_GROUP_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
                 cl::EnqueueArgs args(queue_, global_range, local_range);
             
-                event = bitonic_hard(args, sequence, biton_size, bucket_size);
+                event = small_biton(args, sequence, biton_size, bucket_size);
             }
-            /*else { // !
-                
-                cl::NDRange local_range(1, 1, bucket_size / 2);
-                cl::EnqueueArgs args(queue_, global_range, local_range);
-            
-                event = big_bucket(args, sequence, biton_size, bucket_size);
-                
-            }*/
             event.wait(); //Is that need?
-            /*
-            else {
-                //printf("Ouch\n");
-                cl::NDRange local_range(1, 1, 1);
-                cl::EnqueueArgs args(queue_, global_range, local_range);
-
-                event = bitonic_simple(args, sequence, biton_size, bucket_size);
-            }
-            event.wait();*/
-
-            /*cl::copy(queue_, sequence, sequence_ptr, sequence_ptr + sequence_size);
-            for (int i = 0; i < ARR_SIZE; i++) {
-                printf("%d ", sequence_ptr[i]);
-            }
-            printf("\n");*/
-            //GPUTimeStart = event.getProfilingInfo<CL_PROFILING_COMMAND_START>();
-            //GPUTimeFin = event.getProfilingInfo<CL_PROFILING_COMMAND_END>();
-
-            //GDurAll += (GPUTimeFin - GPUTimeStart) / 1000000; // ns -> ms
         }
     }
 
@@ -226,9 +200,9 @@ int main(int argc, char **argv) try {
     
 #ifdef FROM_FILE
     
-    //std::ifstream in_num("./test.txt");
-    //std::ifstream in_num("./_512_.txt");
-    std::ifstream in_num("./_32_.txt");
+    //std::ifstream in_num("./Tests/test.txt");
+    //std::ifstream in_num("./Tests/_512_.txt");
+    std::ifstream in_num("./Tests/_32_.txt");
     
 
     for(int i = 0; i < ARR_SIZE; i++) {
