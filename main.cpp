@@ -9,6 +9,7 @@
 #include <string>
 #include <system_error>
 #include <vector>
+#include <climits>
 
 // Compile : g++ main.cpp -lOpenCL -DFROM_FILE -DPRINT_SORT -O2
 
@@ -33,6 +34,7 @@
 
 
 //constexpr size_t   ARR_SIZE = 4000000;
+//constexpr size_t   ARR_SIZE = 173986568;
 constexpr size_t ARR_SIZE = 4194304;
 //constexpr size_t ARR_SIZE = 268435456;
 //constexpr size_t ARR_SIZE = 64;
@@ -112,18 +114,21 @@ cl::Context OclApp::get_gpu_context(cl_platform_id PId) {
 
 cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
 
-    /*size_t new_sequence_size = sequence_size;
+    size_t new_sequence_size = sequence_size;
 
     if ((sequence_size & (sequence_size - 1)) != 0) {
 
         for (int i = 1; i < 64; i <<= 1) new_sequence_size |= (new_sequence_size >> i);
         new_sequence_size++;
-        printf("New is %ld\n", new_sequence_size);
-    }*/
+    }
+    printf("New is %ld\n", new_sequence_size);
+    
+    std::vector<int> full_sequence(new_sequence_size, INT_MAX);
+    std::copy(sequence_ptr, sequence_ptr + sequence_size, full_sequence.begin());
 
-    cl::Buffer sequence(context_, CL_MEM_READ_WRITE, sequence_size * sizeof(cl_int));
+    cl::Buffer sequence(context_, CL_MEM_READ_WRITE, new_sequence_size * sizeof(cl_int));
 
-    cl::copy(queue_, sequence_ptr, sequence_ptr + sequence_size, sequence);
+    cl::copy(queue_, full_sequence.data(), full_sequence.data() + new_sequence_size, sequence);
 
     cl::Program program(context_, kernel_code_, true);
     
@@ -135,11 +140,11 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
 
     std::chrono::high_resolution_clock::time_point TimeStart = std::chrono::high_resolution_clock::now();
 
-    for (int biton_size = 2; biton_size <= ARR_SIZE; biton_size *= 2) {
+    for (int biton_size = 2; biton_size <= new_sequence_size; biton_size *= 2) {
 
         for (int bucket_size = biton_size; bucket_size >= 2; bucket_size /= 2) {
 
-            cl::NDRange global_range(ARR_SIZE / biton_size, biton_size / bucket_size, bucket_size / 2);
+            cl::NDRange global_range(new_sequence_size / biton_size, biton_size / bucket_size, bucket_size / 2);
                 
             if (bucket_size >= WORK_GROUP_SIZE * 2) {
 
