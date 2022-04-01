@@ -1,6 +1,0 @@
-Hello from bitonic
-Selected: NVIDIA CUDA: FULL_PROFILE
-GPU events time measured: 60 ms
-GPU wall time measured: 81 ms
-CPU time measured: 1042 ms
-All checks passed
