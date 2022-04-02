@@ -33,12 +33,15 @@
     std::cout
 
 
-//constexpr size_t   ARR_SIZE = 4000000;
+//constexpr size_t   ARR_SIZE = 5000000;
+constexpr size_t   ARR_SIZE = 4000000;
 //constexpr size_t   ARR_SIZE = 173986568;
-constexpr size_t ARR_SIZE = 4194304;
+//constexpr size_t ARR_SIZE = 200000;
+//constexpr size_t ARR_SIZE = 4194304;
 //constexpr size_t ARR_SIZE = 268435456;
 //constexpr size_t ARR_SIZE = 64;
 #define WORK_GROUP_SIZE 64
+#define MAX_RAND_INIT 10000000
 
 //long GDurAll = 0;
 
@@ -114,14 +117,16 @@ cl::Context OclApp::get_gpu_context(cl_platform_id PId) {
 
 cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
 
-    size_t new_sequence_size = sequence_size;
+    int new_sequence_size = static_cast<int>(sequence_size); // Whatever this realization of algorithm don't work, if 
+                                                             // you have 2GB GPU memory and want sort 8GB array 
 
     if ((sequence_size & (sequence_size - 1)) != 0) {
 
         for (int i = 1; i < 64; i <<= 1) new_sequence_size |= (new_sequence_size >> i);
         new_sequence_size++;
     }
-    printf("New is %ld\n", new_sequence_size);
+
+    dbgs << "New is " << new_sequence_size << std::endl;
     
     std::vector<int> full_sequence(new_sequence_size, INT_MAX);
     std::copy(sequence_ptr, sequence_ptr + sequence_size, full_sequence.begin());
@@ -193,9 +198,6 @@ template <typename It> void rand_init(It start, It end, int low, int up) {
 int main(int argc, char **argv) try {
 
     std::chrono::high_resolution_clock::time_point TimeStart, TimeFin;
-    cl_ulong GPUTimeStart, GPUTimeFin;
-    
-    long Dur, GDur;
     
     dbgs << "Hello from bitonic" << std::endl;
 
@@ -217,7 +219,7 @@ int main(int argc, char **argv) try {
 #endif
 
 #ifndef FROM_FILE
-    rand_init(sequence.begin(), sequence.end(), 0, 100);
+    rand_init(sequence.begin(), sequence.end(), 0, MAX_RAND_INIT);
 #endif
 
     cl::vector<int> sequence_copy = sequence;
@@ -226,7 +228,7 @@ int main(int argc, char **argv) try {
     cl::Event event = app.bitonic(sequence.data(), ARR_SIZE);
     TimeFin = std::chrono::high_resolution_clock::now();
     
-    Dur = std::chrono::duration_cast<std::chrono::milliseconds>(TimeFin - TimeStart).count();
+    long Dur = std::chrono::duration_cast<std::chrono::milliseconds>(TimeFin - TimeStart).count();
 
     std::cout << "GPU wall time measured: " << Dur << " ms" << std::endl;
 
@@ -256,7 +258,7 @@ int main(int argc, char **argv) try {
     
     std::cout << "CPU time measured: " << Dur << " ms" << std::endl;
 
-    for (int i = 0; i < ARR_SIZE; ++i) {
+    for (size_t i = 0; i < ARR_SIZE; ++i) {
         
         auto lhs = sequence[i];
         auto rhs = sequence_copy[i];
