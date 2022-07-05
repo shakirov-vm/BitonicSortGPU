@@ -1,5 +1,6 @@
 
-#define WORK_GROUP_SIZE 64
+
+#define WORK_GROUP_SIZE %                                          // more spaces for changing %
 
 // i - bitons_counter, j - buckets_counter, k - count in bucket
 
