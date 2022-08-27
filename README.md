@@ -7,19 +7,20 @@
 
 g++ main.cpp "BitonicLib/Bitonic.cpp" -lOpenCL -DCL_VERSION_2_0 -O2 
 
-// flags:
+Flags:
 
-// "SIMPLE" - turn on simple.cl       <--|
-// "FAST"   - turn on fast.cl         <---- This flags can't be defined at the same time 
-// "SHARED" - turn on shared.cl       <--|
-// "FROM_FILE" - take data from your file
-// "PRINT_SORT" - print sorted array
-// "CL_VERSION_2_0" - required for SVM
+1) "SIMPLE" - turn on simple.cl    		  <--|
+2) "FAST"   - turn on fast.cl       	  <---- This flags can't be defined at the same time
+3) "SHARED" - turn on shared.cl     	  <--|
+4) "FROM_FILE" - take data from your file
+5) "PRINT_SORT" - print sorted array
+6) "CL_VERSION_2_0" - required for SVM
 
-// Possible PATH {to kernels}:
-// "BitonicLib/Kernels/fast.cl"
-// "BitonicLib/Kernels/simple.cl"
-// "BitonicLib/Kernels/shared.cl"
+Possible PATH {to kernels}:
+
+1) "BitonicLib/Kernels/fast.cl"
+2) "BitonicLib/Kernels/simple.cl"
+3) "BitonicLib/Kernels/shared.cl"
 
 If you do not need shared_virtual_memory kernel - you can not use the CL_VERSION_2_0 flag
 
