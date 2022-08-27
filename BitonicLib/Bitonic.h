@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 #ifndef CL_HPP_TARGET_OPENCL_VERSION
 #define CL_HPP_MINIMUM_OPENCL_VERSION 120
@@ -12,14 +13,23 @@
 
 #include "CL/opencl.hpp"
 
+#ifdef SHARED
+#include "CL/cl.h"
+#endif
+
 #ifndef ANALYZE
 #define ANALYZE 1
 #endif
 
-#define dbgs                                                                   \
-  if (!ANALYZE) {                                                              \
-  } else                                                                       \
-    std::cout
+#if (!defined SIMPLE && !defined SHARED && !defined FAST)       // Default way
+#define SIMPLE
+#define PATH "BitonicLib/Kernels/simple.cl"
+#endif
+
+#define dbgs                                                                     \
+    if (!ANALYZE) {                                                              \
+    } else                                                                       \
+        std::cout
 
 struct option_error : public std::runtime_error {
     option_error(const char *str) : std::runtime_error(str) {}
@@ -31,6 +41,30 @@ struct settings_OL {
 
 	settings_OL(int work_group_size_ = 8) : work_group_size(work_group_size_) {}
 };
+
+#ifdef SHARED
+
+template <typename T>
+class SVMAllocator {
+
+    cl::Context* context_;
+
+public:
+
+    SVMAllocator(cl::Context& c) : context_(&c) {}
+
+    T* allocate(size_t n) {
+
+        return (T*) clSVMAlloc((*context_)(), CL_MEM_READ_WRITE, n * sizeof(T), 0);
+    }
+    void deallocate(T* ptr, size_t n) {
+
+        clSVMFree((*context_)(), ptr);
+    }
+    using value_type = T;
+};
+
+#endif
 
 class OclApp {
 

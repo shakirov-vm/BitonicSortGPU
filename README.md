@@ -3,6 +3,28 @@
 
 Это реализация битонической сортировки на видеокарте с использованием OpenCL
 
+# Компиляция
+
+g++ main.cpp "BitonicLib/Bitonic.cpp" -lOpenCL -DCL_VERSION_2_0 -O2 
+
+// flags:
+
+// "SIMPLE" - turn on simple.cl       <--|
+// "FAST"   - turn on fast.cl         <---- This flags can't be defined at the same time 
+// "SHARED" - turn on shared.cl       <--|
+// "FROM_FILE" - take data from your file
+// "PRINT_SORT" - print sorted array
+// "CL_VERSION_2_0" - required for SVM
+
+// Possible PATH {to kernels}:
+// "BitonicLib/Kernels/fast.cl"
+// "BitonicLib/Kernels/simple.cl"
+// "BitonicLib/Kernels/shared.cl"
+
+If you do not need shared_virtual_memory kernel - you can not use the CL_VERSION_2_0 flag
+
+Default kernel is simple kernel
+
 # Код host'а
 
 Я использовал представление битонической сортировки в виде 5 вложенных циклов. 2 внешних исполняются последовательно, а 3 внутренних - могут параллельно.
@@ -51,3 +73,5 @@
 | 5 000 000			 | 140        |	180							| 125  		 |
 
 Вообще говоря, эти результаты получены при MAX_RAND_INIT = 100 - то есть в сортируемой последовательности числа от 0 до 100. При таком значении очень мало перестановок (swap) во время сортировки, поэтому на процессоре сортируется быстрее, чем при большом MAX_RAND_INIT. Если увеличивать MAX_RAND_INIT, то std::sort начнёт работать ощутимо медленнее, в то время как на битонической сортировке это отразится слабее. Так, при MAX_RAND_INIT = 10 000 000 и ARR_SIZE = 4 000 000 результаты немного другие: на CPU работает 250 мс, а на GPU те же 95 мс суммарно и 65 мс чистых.
+
+Текущая версия shared kernel не даёт ускорения на дискретной видеокарте

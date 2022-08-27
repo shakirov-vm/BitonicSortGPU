@@ -13,25 +13,23 @@
 
 #include "./BitonicLib/Bitonic.h"
 
-// Compile : g++ main.cpp -lOpenCL -DFROM_FILE -DPRINT_SORT -O2
-/*
-#ifndef MODE
-#define MODE "default"
-#endif
+// TODO: concepts
 
-#if (strcmp(MODE, "default_mode"))
-#define PATH "BitonicLib/Kernels/fast.cl"
+// Default kernel is simple kernel
 
-#elif (std::strcmp(MODE, "fast"))
-#define PATH "BitonicLib/Kernels/fast.cl"
+// WORK_GROUP_SIZE can't be more than 64 (Why?)
 
-#elif (std::strcmp(MODE, "simple"))
+#ifdef SIMPLE
 #define PATH "BitonicLib/Kernels/simple.cl"
-
 #endif
-*/
 
+#ifdef FAST
 #define PATH "BitonicLib/Kernels/fast.cl"
+#endif
+
+#ifdef SHARED
+#define PATH "BitonicLib/Kernels/shared.cl"
+#endif
 
 #define MAX_RAND_INIT 10000000
 
@@ -43,13 +41,10 @@ template <typename It> void rand_init(It start, It end, int low, int up) {
     for (It cur = start; cur != end; ++cur) *cur = dist(mt_source);
 }
 
-
 int main(int argc, char **argv) try {
-/*
-#if (std::strcmp(MODE, "default_mode"))
-    std::cout << "Default mode choosen" << std::endl;
-#endif
-*/
+
+    std::cout << "Choosen " << PATH << std::endl;
+
     if (argc != 3) {
         std::cout << "First arg is arr_size, second is work_group_size, your num of params is invalid" << std::endl;
         return -1;

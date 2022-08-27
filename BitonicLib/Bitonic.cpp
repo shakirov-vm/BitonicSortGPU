@@ -13,7 +13,7 @@
 
 #include "Bitonic.h"
 
-#define LOCAL_SIZE 1
+#define LOCAL_SIZE 1 // This for simple
 
 std::string OclApp::read_file(const char *path) {
 
@@ -40,8 +40,29 @@ cl::Platform OclApp::select_platform() {
     for (auto it : platforms) {
 
         cl_uint numdevices = 0;
+        cl_device_id devices[10];
         
         ::clGetDeviceIDs(it(), CL_DEVICE_TYPE_GPU, 0, NULL, &numdevices);
+
+#ifdef SHARED
+
+        ::clGetDeviceIDs(it(), CL_DEVICE_TYPE_GPU, numdevices, devices, NULL);
+
+        for (int j = 0; j < numdevices; j++) {
+
+            cl_device_svm_capabilities caps;
+            cl_int err = clGetDeviceInfo(devices[j], CL_DEVICE_SVM_CAPABILITIES, sizeof(cl_device_svm_capabilities), &caps, 0);
+
+            if (caps & CL_DEVICE_SVM_COARSE_GRAIN_BUFFER)
+                std::cout << devices[j] << " is CL_DEVICE_SVM_COARSE_GRAIN_BUFFER" << std::endl;
+            if (caps & CL_DEVICE_SVM_FINE_GRAIN_BUFFER)
+                std::cout << devices[j] << " is CL_DEVICE_SVM_FINE_GRAIN_BUFFER" << std::endl;
+            if (caps & CL_DEVICE_SVM_FINE_GRAIN_SYSTEM)
+                std::cout << devices[j] << " is CL_DEVICE_SVM_FINE_GRAIN_SYSTEM" << std::endl;
+            std::cout << "That all about " << devices[j] << std::endl;
+        }
+
+#endif
 
         if (numdevices > 0) return cl::Platform(it);
     }
@@ -55,6 +76,7 @@ cl::Context OclApp::get_gpu_context(cl_platform_id PId) {
     return cl::Context(CL_DEVICE_TYPE_GPU, properties);
 }
 
+#ifdef FAST 
 //error with work_group_size?
 cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
 
@@ -127,7 +149,10 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
     return event;
 }
 
-/*
+#endif
+
+#ifdef SIMPLE
+
 cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
 
     int new_sequence_size = static_cast<int>(sequence_size); // Whatever this realization of algorithm don't work, if 
@@ -170,7 +195,74 @@ cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
         }
     }
 
+    std::chrono::high_resolution_clock::time_point TimeFin = std::chrono::high_resolution_clock::now();
+
+    long Dur = std::chrono::duration_cast<std::chrono::milliseconds>(TimeFin - TimeStart).count();
+
+    dbgs << "GPU events time measured: " << Dur << " ms" << std::endl;
+
     cl::copy(queue_, sequence, sequence_ptr, sequence_ptr + sequence_size);
     return event;
 }
-*/
+
+#endif
+
+#ifdef SHARED
+
+cl::Event OclApp::bitonic(cl_int *sequence_ptr, size_t sequence_size) {
+
+    int new_sequence_size = static_cast<int>(sequence_size); // Whatever this realization of algorithm don't work, if 
+                                                             // you have 2GB GPU memory and want sort 8GB array 
+
+    if ((sequence_size & (sequence_size - 1)) != 0) {
+
+        for (int i = 1; i < 64; i <<= 1) new_sequence_size |= (new_sequence_size >> i);
+        new_sequence_size++;
+    }
+
+    dbgs << "New is " << new_sequence_size << std::endl;
+    dbgs << "work_group_size is " << settings.work_group_size << std::endl;
+    
+    std::vector<int> full_sequence(new_sequence_size, INT_MAX);
+    std::copy(sequence_ptr, sequence_ptr + sequence_size, full_sequence.begin());
+
+    SVMAllocator<int> custom_alloc(context_);
+    std::vector<int, SVMAllocator<int>> memory_seq (new_sequence_size, custom_alloc);
+    cl::Buffer sequence(context_, CL_MEM_READ_WRITE | CL_MEM_USE_HOST_PTR, new_sequence_size * sizeof(cl_int), memory_seq.data());
+    
+    cl::copy(queue_, full_sequence.data(), full_sequence.data() + new_sequence_size, sequence);
+
+    cl::Program program(context_, kernel_code_, true);
+    
+    bitonic_t shared_biton(program, "shared_biton");  
+
+    cl::Event event;
+
+    std::chrono::high_resolution_clock::time_point TimeStart = std::chrono::high_resolution_clock::now();
+
+    for (int biton_size = 2; biton_size < new_sequence_size + 1; biton_size *= 2) {
+
+        for (int bucket_size = biton_size; bucket_size > 1; bucket_size /= 2) {
+         
+            cl::NDRange global_range(new_sequence_size / biton_size, biton_size / bucket_size, bucket_size / 2);
+            cl::NDRange local_range(LOCAL_SIZE, LOCAL_SIZE, LOCAL_SIZE);
+
+            cl::EnqueueArgs args(queue_, global_range, local_range);
+
+            event = shared_biton(args, sequence, biton_size, bucket_size);
+            event.wait();
+        }
+    }
+
+    std::chrono::high_resolution_clock::time_point TimeFin = std::chrono::high_resolution_clock::now();
+
+    long Dur = std::chrono::duration_cast<std::chrono::milliseconds>(TimeFin - TimeStart).count();
+
+    dbgs << "GPU events time measured: " << Dur << " ms" << std::endl;
+
+    cl::copy(queue_, sequence, sequence_ptr, sequence_ptr + sequence_size);
+
+    return event;
+}
+
+#endif
